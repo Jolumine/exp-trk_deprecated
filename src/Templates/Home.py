@@ -4,6 +4,7 @@ from PyQt5.QtGui import QIcon
 from .Expense.Home_Expense import Home_Expense
 from .Revenue.Home_Income import Home_Income
 from .Plot.Plot_Window import Plot_Window
+from .Export.Export_Window import Export_Window
 
 from ..vars import Main_Logo
 
@@ -33,6 +34,12 @@ class Root_Window(QDialog):
         self.Plot.setToolTip("Click to open the Plot Menu")
         self.Plot.clicked.connect(self.plot)
 
+        self.export_label = QLabel(self)
+        self.export_label.setText("Export: ")
+
+        self.exportbtn = QPushButton("Export", self)
+        self.exportbtn.setToolTip("Click to open the Export Menu")
+        self.exportbtn.clicked.connect(self.export)
         expense_layout = QHBoxLayout()
         expense_layout.addWidget(self.exp_label)
         expense_layout.addWidget(self.Expense)
@@ -65,4 +72,7 @@ class Root_Window(QDialog):
 
     def plot(self): 
         dialog = Plot_Window(self.active_user) 
+
+    def export(self):
+        dialog = Export_Window(self.active_user)
     
