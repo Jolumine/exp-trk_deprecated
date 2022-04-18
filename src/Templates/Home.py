@@ -1,11 +1,11 @@
-from PyQt5.QtGui import * 
-from PyQt5.QtWidgets import * 
-from PyQt5.QtCore import *
-from ..vars import * 
-from .Plot.Plot_Window import Plot_Window
-from .Expense.Home_Expense import * 
-from .Revenue.Home_Income import * 
+from PyQt5.QtWidgets import QDialog, QLabel, QHBoxLayout, QPushButton, QVBoxLayout
+from PyQt5.QtGui import QIcon
 
+from .Expense.Home_Expense import Home_Expense
+from .Revenue.Home_Income import Home_Income
+from .Plot.Plot_Window import Plot_Window
+
+from ..vars import Main_Logo
 
 class Root_Window(QDialog): 
     def __init__(self, active_user, parent=None): 

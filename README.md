@@ -1,4 +1,4 @@
-# :bar_chart:Expense_Tracker (Development)
+# :bar_chart:Expense_Tracker
 
 <b>You always searched a way to track your money? Than the search ends here. </b>
 

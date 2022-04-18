@@ -1,9 +1,10 @@
-from PyQt5.QtWidgets import * 
-from PyQt5.QtGui import * 
-from PyQt5.QtCore import *
+from PyQt5.QtWidgets import QLineEdit, QDialog, QPushButton, QVBoxLayout, QLabel
+from PyQt5.QtGui import QIcon
+
 from cryptography.fernet import Fernet
-from ...algos import get_folder_number, get_new_number
-from ...vars import *  
+from ...algos import get_new_number
+from ...vars import New_User_Logo, Wrong_Logo, log_file
+
 import os 
 import json 
 import logging 

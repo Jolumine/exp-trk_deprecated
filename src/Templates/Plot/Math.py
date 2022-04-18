@@ -209,7 +209,6 @@ class Math:
                 plt.xlabel("Months")
                 plt.ylabel("Amount")        
                 plt.show() 
-                
         else:
             pass 
         
