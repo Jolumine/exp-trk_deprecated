@@ -35,7 +35,7 @@ class Setup:
 
     
     def dirs(self) -> None:
-        if self.check(self.root):
+        if self.check(self.root) == False:
             os.chdir(f"C:/Users/{os.getlogin()}/AppData\\local")
             os.mkdir("Expense_Tracker")
             os.chdir(self.root)
@@ -86,35 +86,6 @@ class Setup:
             logging.basicConfig(filename=f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\logs.log", encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
             logging.info("Logo Download [OK]")
 
-    def cache(self) -> None:
-        os.chdir(self.root+"\\cache")
-
-        with open(".cache", "w") as f: 
-            f.close()
-
-    def get_os(self) -> str:
-        return platform.system()
-        
-
-    def download(self) -> None: 
-        if self.check_connection() and self.check(self.root+"\\resources\\Add_Logo.png") == False:
-            urllib.request.urlretrieve(self.Add_Logo_Link, f'{self.root+"/resources/"}Logos/Add_Logo.png')
-            urllib.request.urlretrieve(self.Admin_Logo_Link, f'{self.root+"/resources/"}Logos/Admin_Logo.png')
-            urllib.request.urlretrieve(self.Main_Logo_Link, f'{self.root+"/resources/"}Logos/Main_Logo.png')
-            urllib.request.urlretrieve(self.Delete_Logo_Link, f'{self.root+"/resources/"}Logos/Delete_Logo.png')
-            urllib.request.urlretrieve(self.Expense_Logo_Link, f'{self.root+"/resources/"}Logos/Expense_Logo.png')
-            urllib.request.urlretrieve(self.Eye_Logo_Link, f'{self.root+"/resources/"}Logos/Eye_Logo.jpg')
-            urllib.request.urlretrieve(self.Graph_Icon_Link, f'{self.root+"/resources/"}Logos/Graph_Logo.png')
-            urllib.request.urlretrieve(self.Login_Icon_Link, f'{self.root+"/resources/"}Logos/Login_Icon.png')
-            urllib.request.urlretrieve(self.New_User_Logo_Link, f'{self.root+"/resources/"}Logos/New_User_Logo.png')
-            urllib.request.urlretrieve(self.Admin_Logo_Link, f'{self.root+"/resources/"}Logos/Welcome.png')
-            urllib.request.urlretrieve(self.Wrong_Logo_Link, f'{self.root+"/resources/"}Logos/Wrong_Icon.png')
-            urllib.request.urlretrieve(self.Mod_Logo_Link, f'{self.root+"/resources/"}Logos/Mod_Icon.png')
-            urllib.request.urlretrieve(self.Export_Logo_Link, f'{self.root+"/resources/"}Logos/Export_Icon.png')
-            logging.basicConfig(filename=f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\logs.log", encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
-            logging.info("Logo Download [OK]")
-        else: 
-            pass 
 
     def create_log(self) -> None:
         if self.check(self.root+"//logs.log"):

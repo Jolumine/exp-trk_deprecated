@@ -60,3 +60,11 @@ show_dict = {"January": 0, "February": 0, "March": 0, "April": 0, "May": 0, "Jun
 # Logs 
 
 log_file = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\logs.log"
+
+# Settings std
+
+std_settings = {
+    "currency": "USD", 
+    "language": "EN", 
+    "darkmode": False
+}

@@ -1,9 +1,9 @@
 from PyQt5.QtWidgets import QLineEdit, QDialog, QPushButton, QVBoxLayout, QLabel
 from PyQt5.QtGui import QIcon
+from Crypto.PublicKey import RSA
 
-from cryptography.fernet import Fernet
 from ...algos import get_new_number
-from ...vars import New_User_Logo, Wrong_Logo, log_file
+from ...vars import New_User_Logo, Wrong_Logo, log_file, std_settings
 
 import os 
 import json 
@@ -13,7 +13,7 @@ class New_User(QDialog):
     def __init__(self): 
         super().__init__()
 
-        self.root_folder = "C:\\Users\\Leonard Becker\\Documents\\Expense_Tracker"
+        self.root_folder = "C:\\Users\\Leonard Becker\\AppData/local\\Expense_Tracker"
 
         self.username = QLineEdit(self)
         self.username.setPlaceholderText("Username")
@@ -90,9 +90,12 @@ class New_User(QDialog):
 
             os.chdir(self.root_folder+"/users/"+folder_name)
 
-            data_file = open(self.root_folder+"\\users\\"+folder_name+"\\data.json", "w")
+            os.mkdir("keys")
 
-            settings_file = open(self.root_folder+"\\users\\"+folder_name+"\\settings.json", "w")
+            with open(self.root_folder+"\\users\\"+folder_name+"\\settings.json", "w") as sett: 
+                parsed = json.dumps(std_settings, indent=4, sort_keys=False)
+                sett.write(parsed)
+                sett.close()
 
             exp_file = open(self.root_folder+"\\users\\"+folder_name+"\\expenses.csv", "w")
             exp_file.write("Amount,Day,Month,Year\n")
@@ -102,9 +105,16 @@ class New_User(QDialog):
             in_file.write("Amount,Day,Month,Year\n")
             in_file.close()
 
-            key_file = open(self.root_folder+"\\users\\"+folder_name+"\\key.txt", "w")
-            key_file.write(str(Fernet.generate_key()))
-            key_file.close()
+            seckey = RSA.generate(1024)
+            with open(f"{self.root_folder}/users/{folder_name}/keys/seckey.pem", "wb") as file: 
+                file.write(seckey.export_key(format="PEM"))
+                file.close()
+
+            pblkey = seckey.publickey()
+            with open(f"{self.root_folder}/users/{folder_name}/keys/pblkey.pem", "wb") as file: 
+                file.write(pblkey.export_key(format="PEM"))
+                file.close()
+
 
             dict = {
                 "Username": username, 
@@ -114,9 +124,7 @@ class New_User(QDialog):
             }
 
 
-            file = f"C:\\Users\\Leonard Becker\\Documents\\Expense_Tracker\\users\\{folder_name}\\data.json"
-
-            with open(file, "w") as f: 
+            with open(self.root_folder+"\\users\\"+folder_name+"\\data.json", "w") as f: 
                 parsed = json.dumps(dict, indent=4, sort_keys=False)
 
                 f.write(parsed)
