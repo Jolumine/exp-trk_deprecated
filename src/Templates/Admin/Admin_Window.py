@@ -60,7 +60,7 @@ class Admin_Window(QDialog):
                 
             info.exec_()  
         else:
-            os.remove(f"C:/Users/{os.getlogin()}/Documents/Expense_Tracker/users/{get_folder_number(splitted[0], get_password(splitted[0]))}")
+            os.remove(f"C:/Users/{os.getlogin()}/AppData/local/Expense_Tracker/users/{get_folder_number(splitted[0], get_password(splitted[0]))}")
 
 
     def mod(self):
