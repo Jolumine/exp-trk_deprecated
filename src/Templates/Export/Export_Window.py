@@ -26,21 +26,18 @@ class Export_Window(QDialog):
         self.file_label.setText("File: ")
 
         self.file = QPushButton("Select", self)
-        self.file.setToolTip(
-            "Click to select a file where the data is written")
+        self.file.setToolTip("Click to select a file where the data is written")
         self.file.clicked.connect(self.getFile)
 
         self.doc_check = QCheckBox(self)
         self.doc_check.setText("Personel Documents")
-        self.doc_check.setToolTip(
-            "Check to export the data into your Document Section")
+        self.doc_check.setToolTip("Check to export the data into your Document Section")
         self.doc_check.setChecked(False)
         self.doc_check.stateChanged.connect(self.value_changed)
 
         self.desk_check = QCheckBox(self)
         self.desk_check.setText("Personel Desktop")
-        self.desk_check.setToolTip(
-            "Check to export the data on to your Desktop")
+        self.desk_check.setToolTip("Check to export the data on to your Desktop")
         self.desk_check.setChecked(False)
         self.desk_check.stateChanged.connect(self.value_changed)
 
@@ -70,98 +67,222 @@ class Export_Window(QDialog):
         self.exec_()
 
     def export(self) -> None:
-        if self.doc_check.isChecked() and self.file_path == "":
-            exp_file = f"{self.root_folder}//{self.active_user}//expenses.csv"
-            rev_file = f"{self.root_folder}//{self.active_user}//income.csv"
+        month = self.month.currentText()
+        if month == "All":
 
-            data = {"Expenses": [], "Revenue": []}
+            if self.doc_check.isChecked() and self.file_path == "":
+                exp_file = f"{self.root_folder}//{self.active_user}//expenses.csv"
+                rev_file = f"{self.root_folder}//{self.active_user}//income.csv"
 
-            with open(exp_file, "r") as f_exp:
-                reader = csv.DictReader(f_exp)
+                data = {"Expenses": [], "Revenue": []}
 
-                for row in reader:
-                    data["Expenses"].append(row)
+                with open(exp_file, "r") as f_exp:
+                    reader = csv.DictReader(f_exp)
 
-                f_exp.close()
+                    for row in reader:
+                        data["Expenses"].append(row)
 
-            with open(rev_file, "r") as f_rev:
-                reader = csv.DictReader(f_rev)
+                    f_exp.close()
 
-                for row in reader:
-                    data["Revenue"].append(row)
+                with open(rev_file, "r") as f_rev:
+                    reader = csv.DictReader(f_rev)
 
-                f_rev.close()
+                    for row in reader:
+                        data["Revenue"].append(row)
 
-            parsed = json.dumps(data, indent=4, sort_keys=False)
+                    f_rev.close()
 
-            with open(f"C://Users//{os.getlogin()}//Documents//export.json", "w") as export_file:
-                export_file.write(parsed)
-                export_file.close()
+                parsed = json.dumps(data, indent=4, sort_keys=False)
 
-            self.close()
+                with open(f"C://Users//{os.getlogin()}//Documents//export.json", "w") as export_file:
+                    export_file.write(parsed)
+                    export_file.close()
 
-        elif self.desk_check.isChecked() and self.file_path == "":
-            exp_file = f"{self.root_folder}//{self.active_user}//expenses.csv"
-            rev_file = f"{self.root_folder}//{self.active_user}//income.csv"
+                self.close()
 
-            data = {"Expenses": [], "Revenue": []}
+            elif self.desk_check.isChecked() and self.file_path == "":
+                exp_file = f"{self.root_folder}//{self.active_user}//expenses.csv"
+                rev_file = f"{self.root_folder}//{self.active_user}//income.csv"
 
-            with open(exp_file, "r") as f_exp:
-                reader = csv.DictReader(f_exp)
+                data = {"Expenses": [], "Revenue": []}
 
-                for row in reader:
-                    data["Expenses"].append(row)
+                with open(exp_file, "r") as f_exp:
+                    reader = csv.DictReader(f_exp)
 
-                f_exp.close()
+                    for row in reader:
+                        data["Expenses"].append(row)
 
-            with open(rev_file, "r") as f_rev:
-                reader = csv.DictReader(f_rev)
+                    f_exp.close()
 
-                for row in reader:
-                    data["Revenue"].append(row)
+                with open(rev_file, "r") as f_rev:
+                    reader = csv.DictReader(f_rev)
 
-                f_rev.close()
+                    for row in reader:
+                        data["Revenue"].append(row)
 
-            parsed = json.dumps(data, indent=4, sort_keys=False)
+                    f_rev.close()
 
-            with open(f"C://Users//{os.getlogin()}//Desktop//export.json", "w") as export_file:
-                export_file.write(parsed)
-                export_file.close()
+                parsed = json.dumps(data, indent=4, sort_keys=False)
 
-            self.close()
+                with open(f"C://Users//{os.getlogin()}//Desktop//export.json", "w") as export_file:
+                    export_file.write(parsed)
+                    export_file.close()
+
+                self.close()
+
+            else:
+                pass 
 
         else:
-            print("else")
+            if self.doc_check.isChecked() and self.file_path == "":
+                exp_file = f"{self.root_folder}//{self.active_user}//expenses.csv"
+                rev_file = f"{self.root_folder}//{self.active_user}//income.csv"
+
+                data = {"Expenses": [], "Revenue": []}
+
+                with open(exp_file, "r") as f_exp:
+                    reader = csv.DictReader(f_exp)
+
+                    for row in reader:
+                        if row["Month"] == month:
+                            data["Expenses"].append(row)
+                        else: 
+                            pass 
+
+                    f_exp.close()
+
+                with open(rev_file, "r") as f_rev:
+                    reader = csv.DictReader(f_rev)
+
+                    for row in reader:
+                        if row["Month"] == month:
+                            data["Revenue"].append(row)
+                        else: 
+                            pass 
+
+                    f_rev.close()
+
+                parsed = json.dumps(data, indent=4, sort_keys=False)
+
+                with open(f"C://Users//{os.getlogin()}//Documents//export.json", "w") as export_file:
+                    export_file.write(parsed)
+                    export_file.close()
+
+                self.close()
+
+            elif self.desk_check.isChecked() and self.file_path == "":
+                exp_file = f"{self.root_folder}//{self.active_user}//expenses.csv"
+                rev_file = f"{self.root_folder}//{self.active_user}//income.csv"
+
+                data = {"Expenses": [], "Revenue": []}
+
+                with open(exp_file, "r") as f_exp:
+                    reader = csv.DictReader(f_exp)
+
+                    for row in reader:
+                        if row["Month"] == month:
+                            data["Expenses"].append(row)
+                        else:
+                            pass 
+
+                    f_exp.close()
+
+                with open(rev_file, "r") as f_rev:
+                    reader = csv.DictReader(f_rev)
+
+                    for row in reader:
+                        if row["Month"] == month:
+                            data["Revenue"].append(row)
+                        else:
+                            pass 
+
+                    f_rev.close()
+
+                parsed = json.dumps(data, indent=4, sort_keys=False)
+
+                with open(f"C://Users//{os.getlogin()}//Desktop//export.json", "w") as export_file:
+                    export_file.write(parsed)
+                    export_file.close()
+
+                self.close()
+
+            else:
+                pass 
+
 
     def getFile(self):
-        dialog = QFileDialog.getSaveFileName(self, "Select File", f"C:/Users/{os.getlogin()}/Desktop", "*.json")
+        month = self.month.currentText()
+        if month == "All":
+            try: 
+                dialog = QFileDialog.getSaveFileName(self, "Select File", f"C:/Users/{os.getlogin()}/Desktop", "*.json")
+                self.file_path = dialog[0]
 
-        self.file_path = dialog[0]
+                exp_file = f"{self.root_folder}//{self.active_user}//expenses.csv"
+                rev_file = f"{self.root_folder}//{self.active_user}//income.csv"
+                data = {"Expenses": [], "Revenue": []}
 
-        exp_file = f"{self.root_folder}//{self.active_user}//expenses.csv"
-        rev_file = f"{self.root_folder}//{self.active_user}//income.csv"
-        data = {"Expenses": [], "Revenue": []}
+                with open(exp_file, "r") as f_exp:
+                    reader = csv.DictReader(f_exp)
 
-        with open(exp_file, "r") as f_exp:
-            reader = csv.DictReader(f_exp)
+                    for row in reader:
+                        data["Expenses"].append(row)
+                    f_exp.close()
 
-            for row in reader:
-                data["Expenses"].append(row)
-            f_exp.close()
+                with open(rev_file, "r") as f_rev: 
+                    reader = csv.DictReader(f_rev)
 
-        with open(rev_file, "r") as f_rev: 
-            reader = csv.DictReader(f_rev)
+                    for row in reader: 
+                        data["Revenue"].append(row)
+                    f_rev.close()
 
-            for row in reader: 
-                data["Revenue"].append(row)
-            f_rev.close()
+                parsed = json.dumps(data, indent=4, sort_keys=False)
 
-        parsed = json.dumps(data, indent=4, sort_keys=False)
+                with open(self.file_path, "w") as export_file: 
+                    export_file.write(parsed)
+                    export_file.close()
+                self.close() 
+            except FileNotFoundError:
+                pass 
 
-        with open(self.file_path, "w") as export_file: 
-            export_file.write(parsed)
-            export_file.close()
-        self.close() 
+        else:
+            try: 
+                dialog = QFileDialog.getSaveFileName(self, "Select File", f"C:/Users/{os.getlogin()}/Desktop", "*.json")
+                self.file_path = dialog[0]
+
+                exp_file = f"{self.root_folder}//{self.active_user}//expenses.csv"
+                rev_file = f"{self.root_folder}//{self.active_user}//income.csv"
+                data = {"Expenses": [], "Revenue": []}
+
+                with open(exp_file, "r") as f_exp:
+                    reader = csv.DictReader(f_exp)
+
+                    for row in reader:
+                        if row["Month"] == month:
+                            data["Expenses"].append(row)
+                        else: 
+                            pass 
+
+                    f_exp.close()
+
+                with open(rev_file, "r") as f_rev: 
+                    reader = csv.DictReader(f_rev)
+
+                    for row in reader: 
+                        if row["Month"] == month:
+                            data["Revenue"].append(row)
+                        else: 
+                            pass 
+
+                    f_rev.close()
+
+                parsed = json.dumps(data, indent=4, sort_keys=False)
+
+                with open(self.file_path, "w") as export_file: 
+                    export_file.write(parsed)
+                    export_file.close()
+                self.close() 
+            except FileNotFoundError:
+                pass 
 
 
 
@@ -176,3 +297,4 @@ class Export_Window(QDialog):
         else: 
             self.doc_check.setChecked(False)
             self.desk_check.setChecked(False)
+
