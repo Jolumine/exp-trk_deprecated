@@ -11,7 +11,7 @@ class Setup:
     Delete_Logo_Link = "https://cdn-icons-png.flaticon.com/512/3096/3096673.png"
     Expense_Logo_Link = "https://cdn-icons-png.flaticon.com/512/61/61584.png"
     Eye_Logo_Link = "https://cdn-icons-png.flaticon.com/512/159/159604.png"
-    Information_Logo = "https://cdn-icons-png.flaticon.com/512/1/1176.png"
+    Information_Logo_Link = "https://cdn-icons-png.flaticon.com/512/1/1176.png"
     Graph_Icon_Link = "https://cdn-icons-png.flaticon.com/512/3121/3121571.png"
     Login_Icon_Link = "https://cdn-icons-png.flaticon.com/512/126/126486.png"
     Main_Logo_Link = "https://cdn-icons-png.flaticon.com/512/2/2144.png"
@@ -19,6 +19,7 @@ class Setup:
     Wrong_Logo_Link = "https://cdn-icons-png.flaticon.com/512/1828/1828665.png"
     Mod_Logo_Link = "https://cdn-icons-png.flaticon.com/512/61/61456.png"
     Export_Logo_Link = "https://cdn-icons-png.flaticon.com/512/151/151900.png"
+    Transfer_Logo_Link = "https://cdn-icons-png.flaticon.com/512/876/876784.png"
 
     def __init__(self):
         self.root = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker"
@@ -80,11 +81,12 @@ class Setup:
             urllib.request.urlretrieve(self.Graph_Icon_Link, f'{self.root+"/resources/"}Logos/Graph_Logo.png')
             urllib.request.urlretrieve(self.Login_Icon_Link, f'{self.root+"/resources/"}Logos/Login_Icon.png')
             urllib.request.urlretrieve(self.New_User_Logo_Link, f'{self.root+"/resources/"}Logos/New_User_Logo.png')
-            urllib.request.urlretrieve(self.Information_Logo, f'{self.root+"/resources/"}Logos/Info_Logo.png')
+            urllib.request.urlretrieve(self.Information_Logo_Link, f'{self.root+"/resources/"}Logos/Info_Logo.png')
             urllib.request.urlretrieve(self.Admin_Logo_Link, f'{self.root+"/resources/"}Logos/Welcome.png')
             urllib.request.urlretrieve(self.Wrong_Logo_Link, f'{self.root+"/resources/"}Logos/Wrong_Icon.png')
             urllib.request.urlretrieve(self.Mod_Logo_Link, f'{self.root+"/resources/"}Logos/Mod_Icon.png')
             urllib.request.urlretrieve(self.Export_Logo_Link, f'{self.root+"/resources/"}Logos/Export_Icon.png')
+            urllib.request.urlretrieve(self.Transfer_Logo_Link, f'{self.root+"/resources/"}Logos/Transfer_Icon.png')
             logging.basicConfig(filename=f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\logs.log", encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
             logging.info("Logo Download [OK]")
 
