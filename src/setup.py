@@ -11,6 +11,7 @@ class Setup:
     Delete_Logo_Link = "https://cdn-icons-png.flaticon.com/512/3096/3096673.png"
     Expense_Logo_Link = "https://cdn-icons-png.flaticon.com/512/61/61584.png"
     Eye_Logo_Link = "https://cdn-icons-png.flaticon.com/512/159/159604.png"
+    Information_Logo = "https://cdn-icons-png.flaticon.com/512/1/1176.png"
     Graph_Icon_Link = "https://cdn-icons-png.flaticon.com/512/3121/3121571.png"
     Login_Icon_Link = "https://cdn-icons-png.flaticon.com/512/126/126486.png"
     Main_Logo_Link = "https://cdn-icons-png.flaticon.com/512/2/2144.png"
@@ -79,6 +80,7 @@ class Setup:
             urllib.request.urlretrieve(self.Graph_Icon_Link, f'{self.root+"/resources/"}Logos/Graph_Logo.png')
             urllib.request.urlretrieve(self.Login_Icon_Link, f'{self.root+"/resources/"}Logos/Login_Icon.png')
             urllib.request.urlretrieve(self.New_User_Logo_Link, f'{self.root+"/resources/"}Logos/New_User_Logo.png')
+            urllib.request.urlretrieve(self.Information_Logo, f'{self.root+"/resources/"}Logos/Info_Logo.png')
             urllib.request.urlretrieve(self.Admin_Logo_Link, f'{self.root+"/resources/"}Logos/Welcome.png')
             urllib.request.urlretrieve(self.Wrong_Logo_Link, f'{self.root+"/resources/"}Logos/Wrong_Icon.png')
             urllib.request.urlretrieve(self.Mod_Logo_Link, f'{self.root+"/resources/"}Logos/Mod_Icon.png')

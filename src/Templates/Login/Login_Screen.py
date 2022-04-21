@@ -9,6 +9,7 @@ from ...vars import Login_Icon, Eye_Logo, Wrong_Logo, log_file
 
 from .security import check_login
 from ...algos import get_folder_number
+from ..Passive.check_transmission import check_transmissions
 
 import logging 
 
@@ -71,9 +72,10 @@ class Login_Page(QDialog):
         folder_number = get_folder_number(username, password)
         if check_login(username, password): 
             self.close()
-            root = Root_Window(folder_number)
+            check_transmissions(folder_number)
             logging.basicConfig(filename=log_file, encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
             logging.info(f"{username} is logged in.")
+            root = Root_Window(folder_number)
         else: 
             info = QDialog()
             info.setWindowTitle("Login failed")

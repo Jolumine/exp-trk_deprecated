@@ -10,6 +10,8 @@ Settings_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\r
 
 Add_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Add_Logo.png"
 
+Information_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Info_Logo.png"
+
 Delete_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Delete_Logo.png"
 
 Wrong_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Wrong_Icon.png"
@@ -56,6 +58,11 @@ days = [str(i) for i in range(1 , 32)]
 
 show_dict = {"January": 0, "February": 0, "March": 0, "April": 0, "May": 0, "June": 0, "July": 0, "August": 0, "September": 0, "October": 0, "November": 0, "December": 0}
 
+# Passive income
+
+routines = ["daily", "weekly", "monthly", "yearly"]
+
+types = ["Stocks / Yield", "Real estate", "Side-Hustle"]
 
 # Logs 
 
