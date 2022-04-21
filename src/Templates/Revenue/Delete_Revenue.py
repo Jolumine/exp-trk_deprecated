@@ -62,7 +62,7 @@ class Delete_Revenue(QDialog):
 
 
         with open(self.file, "a", newline="") as f: 
-            f.write("Amount,Day,Month,Year\n")
+            f.write("Amount,Day,Month,Year,Type,Description\n")
 
             writer = csv.DictWriter(f, fieldnames=field_names, delimiter=",")
 

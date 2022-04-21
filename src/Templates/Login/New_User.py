@@ -98,11 +98,11 @@ class New_User(QDialog):
                 sett.close()
 
             exp_file = open(self.root_folder+"\\users\\"+folder_name+"\\expenses.csv", "w")
-            exp_file.write("Amount,Day,Month,Year\n")
+            exp_file.write("Amount,Day,Month,Year,Type,Description\n")
             exp_file.close()
 
             in_file = open(self.root_folder+"\\users\\"+folder_name+"\\income.csv", "w")
-            in_file.write("Amount,Day,Month,Year\n")
+            in_file.write("Amount,Day,Month,Year,Type,Description\n")
             in_file.close()
 
             seckey = RSA.generate(1024)
@@ -120,7 +120,8 @@ class New_User(QDialog):
                 "Username": username, 
                 "Password": password, 
                 "Firstname": firstname, 
-                "Lastname": lastname
+                "Lastname": lastname,
+                "passive income": {}
             }
 
 

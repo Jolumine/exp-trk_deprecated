@@ -1,8 +1,11 @@
 from msilib.schema import PatchPackage
-from PyQt5.QtWidgets import QPushButton, QDialog, QLineEdit, QComboBox, QCommandLinkButton, QCheckBox, QLabel, QHBoxLayout, QVBoxLayout
+from tkinter import dialog
+from PyQt5.QtWidgets import QPushButton, QDialog, QComboBox, QCheckBox, QLabel, QHBoxLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
 
 from ...vars import Settings_Logo, std_settings
+
+from .Delete_Passive import Delete_Window
 
 import json
 import os
@@ -40,6 +43,13 @@ class Settings_Window(QDialog):
         self.darkmode = QCheckBox(self)
         self.darkmode.setChecked(self.parsed["darkmode"])
 
+        self.passive_label = QLabel(self)
+        self.passive_label.setText("Delete Passive Income: ")
+
+        self.passivebtn = QPushButton("Delete", self)
+        self.passivebtn.setToolTip("Click to open the delete Menu")
+        self.passivebtn.clicked.connect(self.del_passive)
+
         self.reset_label = QLabel(self)
         self.reset_label.setText("Reset Settings: ")
         
@@ -55,10 +65,6 @@ class Settings_Window(QDialog):
         currency_layout.addWidget(self.currency_label)
         currency_layout.addWidget(self.currencys)
 
-        reset_layout = QHBoxLayout()
-        reset_layout.addWidget(self.reset_label)
-        reset_layout.addWidget(self.reset)
-        
         lang_layout = QHBoxLayout()
         lang_layout.addWidget(self.lang_label)
         lang_layout.addWidget(self.languages)
@@ -67,10 +73,19 @@ class Settings_Window(QDialog):
         dark_layout.addWidget(self.darkmode_label)
         dark_layout.addWidget(self.darkmode)
 
+        del_layout = QHBoxLayout()
+        del_layout.addWidget(self.passive_label)
+        del_layout.addWidget(self.passivebtn)
+
+        reset_layout = QHBoxLayout()
+        reset_layout.addWidget(self.reset_label)
+        reset_layout.addWidget(self.reset)
+        
         root = QVBoxLayout()
         root.addLayout(currency_layout)
         root.addLayout(lang_layout)
         root.addLayout(dark_layout)
+        root.addLayout(del_layout)
         root.addLayout(reset_layout)
         root.addWidget(self.savebtn)
 
@@ -110,3 +125,6 @@ class Settings_Window(QDialog):
             f.close()
 
         self.close()
+
+    def del_passive(self):
+        dialog = Delete_Window(self.active) 
