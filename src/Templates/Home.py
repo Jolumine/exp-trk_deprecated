@@ -7,6 +7,7 @@ from .Plot.Plot_Window import Plot_Window
 from .Settings.Settings_Window import Settings_Window
 from .Export.Export_Window import Export_Window
 from .Passive.Passive_Income import Passive_Window
+from .Transfer.Transfer_Window import Transfer_Window
 
 from ..vars import Main_Logo
 
@@ -43,6 +44,13 @@ class Root_Window(QDialog):
         self.Plot.setToolTip("Click to open the Plot Menu")
         self.Plot.clicked.connect(self.plot)
 
+        self.transfer_label = QLabel(self)
+        self.transfer_label.setText("Transfer Menu: ")
+
+        self.transfer_btn = QPushButton("Transfer", self)
+        self.transfer_btn.setToolTip("Click to open the transfer menu")
+        self.transfer_btn.clicked.connect(self.transfer)
+
         self.export_label = QLabel(self)
         self.export_label.setText("Export: ")
 
@@ -73,6 +81,10 @@ class Root_Window(QDialog):
         plt_layout.addWidget(self.plot_label)
         plt_layout.addWidget(self.Plot)
 
+        trans_layout = QHBoxLayout()
+        trans_layout.addWidget(self.transfer_label)
+        trans_layout.addWidget(self.transfer_btn)
+
         export_layout = QHBoxLayout()
         export_layout.addWidget(self.export_label)
         export_layout.addWidget(self.exportbtn)
@@ -86,6 +98,7 @@ class Root_Window(QDialog):
         root.addLayout(rev_layout)
         root.addLayout(pass_layout)
         root.addLayout(plt_layout)
+        root.addLayout(trans_layout)
         root.addLayout(export_layout)
         root.addLayout(settings_layout)
 
@@ -104,6 +117,9 @@ class Root_Window(QDialog):
 
     def plot(self): 
         dialog = Plot_Window(self.active_user) 
+
+    def transfer(self):
+        dialog = Transfer_Window(self.active_user)
 
     def export(self):
         dialog = Export_Window(self.active_user)
