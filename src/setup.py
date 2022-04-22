@@ -20,6 +20,7 @@ class Setup:
     Mod_Logo_Link = "https://cdn-icons-png.flaticon.com/512/61/61456.png"
     Export_Logo_Link = "https://cdn-icons-png.flaticon.com/512/151/151900.png"
     Transfer_Logo_Link = "https://cdn-icons-png.flaticon.com/512/876/876784.png"
+    Warning_Logo_Link = "https://cdn-icons-png.flaticon.com/512/159/159469.png"
 
     def __init__(self):
         self.root = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker"
@@ -55,8 +56,8 @@ class Setup:
             with open(self.root+"\\logs.log", "w") as f:
                 f.close()
 
-        logging.basicConfig(filename=f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\logs.log", encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
-        logging.info("Folder creation [OK]")
+            logging.basicConfig(filename=f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\logs.log", encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
+            logging.info("Folder creation [OK]")
 
             
 
@@ -87,6 +88,7 @@ class Setup:
             urllib.request.urlretrieve(self.Mod_Logo_Link, f'{self.root+"/resources/"}Logos/Mod_Icon.png')
             urllib.request.urlretrieve(self.Export_Logo_Link, f'{self.root+"/resources/"}Logos/Export_Icon.png')
             urllib.request.urlretrieve(self.Transfer_Logo_Link, f'{self.root+"/resources/"}Logos/Transfer_Icon.png')
+            urllib.request.urlretrieve(self.Warning_Logo_Link, f'{self.root+"/resources/"}Logos/Warning_Logo.png')
             logging.basicConfig(filename=f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\logs.log", encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
             logging.info("Logo Download [OK]")
 

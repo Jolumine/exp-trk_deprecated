@@ -64,3 +64,34 @@ def get_password(username) -> str:
                 return parsed["Password"]
             else:
                 pass
+
+def get_username_from_number(number) -> str:
+    path = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users" 
+
+    all = os.listdir(path)
+
+    for i in all: 
+        if i == number:
+            file = path + f"\\{i}\\data.json"
+
+            with open(file, "r") as f: 
+                parsed = json.load(f)
+                
+                return parsed["Username"]
+                
+
+def get_number_from_username(username) -> str: 
+    path = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users" 
+
+    all = os.listdir(path)
+
+    for i in all: 
+        file = path + f"\\{i}\\data.json"
+
+        with open(file, "r") as f: 
+            parsed = json.load(f)
+
+            if parsed["Username"] == username: 
+                return i
+            else: 
+                pass 

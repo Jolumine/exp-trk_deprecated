@@ -32,6 +32,10 @@ Eye_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resour
 
 Export_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Export_Icon.png"
 
+Transfer_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Transfer_Icon.png"
+
+Warning_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Warning_Logo.png"
+
 # Const 
 
 field_names = ["Amount", "Day", "Month", "Year", "Type", "Description"]
