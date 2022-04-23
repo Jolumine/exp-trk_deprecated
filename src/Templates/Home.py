@@ -4,6 +4,7 @@ from PyQt5.QtGui import QIcon
 from .Expense.Home_Expense import Home_Expense
 from .Revenue.Home_Income import Home_Income
 from .Plot.Plot_Window import Plot_Window
+from .Profile_Stats.Statisitic_Window import Statistic_Window
 from .Settings.Settings_Window import Settings_Window
 from .Export.Export_Window import Export_Window
 from .Passive.Passive_Income import Passive_Window
@@ -51,6 +52,13 @@ class Root_Window(QDialog):
         self.transfer_btn.setToolTip("Click to open the transfer menu")
         self.transfer_btn.clicked.connect(self.transfer)
 
+        self.stats_label = QLabel(self)
+        self.stats_label.setText("Statistics: ")
+
+        self.stats_btn = QPushButton("Statistics", self)
+        self.stats_btn.setToolTip("Click to open the profile statistics")
+        self.stats_btn.clicked.connect(self.stats)
+
         self.export_label = QLabel(self)
         self.export_label.setText("Export: ")
 
@@ -81,6 +89,10 @@ class Root_Window(QDialog):
         plt_layout.addWidget(self.plot_label)
         plt_layout.addWidget(self.Plot)
 
+        stats_layout = QHBoxLayout()
+        stats_layout.addWidget(self.stats_label)
+        stats_layout.addWidget(self.stats_btn)
+
         trans_layout = QHBoxLayout()
         trans_layout.addWidget(self.transfer_label)
         trans_layout.addWidget(self.transfer_btn)
@@ -99,6 +111,7 @@ class Root_Window(QDialog):
         root.addLayout(pass_layout)
         root.addLayout(plt_layout)
         root.addLayout(trans_layout)
+        root.addLayout(stats_layout)
         root.addLayout(export_layout)
         root.addLayout(settings_layout)
 
@@ -115,18 +128,20 @@ class Root_Window(QDialog):
     def revenue(self): 
         dialog = Home_Income(self.active_user)
 
+    def passive(self):
+        dialog = Passive_Window(self.active_user)
+
     def plot(self): 
         dialog = Plot_Window(self.active_user) 
 
     def transfer(self):
         dialog = Transfer_Window(self.active_user)
 
+    def stats(self):
+        dialog = Statistic_Window(self.active_user)
+
     def export(self):
         dialog = Export_Window(self.active_user)
 
     def settings(self):
         dialog = Settings_Window(self.active_user)
-
-    def passive(self):
-        dialog = Passive_Window(self.active_user)
-    

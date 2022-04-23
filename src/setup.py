@@ -21,6 +21,7 @@ class Setup:
     Export_Logo_Link = "https://cdn-icons-png.flaticon.com/512/151/151900.png"
     Transfer_Logo_Link = "https://cdn-icons-png.flaticon.com/512/876/876784.png"
     Warning_Logo_Link = "https://cdn-icons-png.flaticon.com/512/159/159469.png"
+    Stats_Logo_Link = "https://cdn-icons-png.flaticon.com/512/876/876171.png"
 
     def __init__(self):
         self.root = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker"
@@ -89,6 +90,7 @@ class Setup:
             urllib.request.urlretrieve(self.Export_Logo_Link, f'{self.root+"/resources/"}Logos/Export_Icon.png')
             urllib.request.urlretrieve(self.Transfer_Logo_Link, f'{self.root+"/resources/"}Logos/Transfer_Icon.png')
             urllib.request.urlretrieve(self.Warning_Logo_Link, f'{self.root+"/resources/"}Logos/Warning_Logo.png')
+            urllib.request.urlretrieve(self.Stats_Logo_Link, f'{self.root+"/resources/"}Logos/Stats_Logo.png')
             logging.basicConfig(filename=f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\logs.log", encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
             logging.info("Logo Download [OK]")
 

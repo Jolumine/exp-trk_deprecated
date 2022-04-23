@@ -36,6 +36,8 @@ Transfer_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\r
 
 Warning_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Warning_Logo.png"
 
+Stats_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Stats_Logo.png"
+
 # Const 
 
 field_names = ["Amount", "Day", "Month", "Year", "Type", "Description"]
