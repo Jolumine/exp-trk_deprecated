@@ -49,9 +49,3 @@ def get_sum_passive(path) -> int:
 
     return sum
 
-
-
-if __name__ == "__main__":
-    print(get_expenses_sum(path))
-    print(get_income_sum(path))
-    print(get_sum_passive(path))
