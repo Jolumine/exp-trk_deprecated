@@ -26,8 +26,9 @@ class Transfer_Window(QDialog):
         self.from_label = QLabel(self)
         self.from_label.setText("From: ")
 
-        self.from_user = QComboBox(self)
-        self.from_user.addItem(get_username_from_number(self.active))
+        self.from_user = QLineEdit(self)
+        self.from_user.setText(get_username_from_number(self.active))
+        self.from_user.setReadOnly(True)
 
         self.to_label = QLabel(self)
         self.to_label.setText("To: ")
