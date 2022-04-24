@@ -40,7 +40,7 @@ def check_existing(tuple, active) -> bool:
                 if row["Amount"] == "Amount":
                     pass 
                 else: 
-                    if row["Amount"] == str(tuple[1]) and row["Day"] == str(date.today().day): 
+                    if row["Amount"] == str(tuple[1]) and row["Day"] == str(date.today().day) and row["Type"] == "Passive Income" and row["Description"] == tuple[0]: 
                         erg = True 
                     else: 
                         pass
@@ -57,7 +57,7 @@ def check_existing(tuple, active) -> bool:
                 if row["Amount"] == "Amount":
                     pass 
                 else: 
-                    if row["Amount"] == str(tuple[1]) and row["Day"] > str(date.today().day-7): 
+                    if row["Amount"] == str(tuple[1]) and row["Day"] > str(date.today().day-7) and row["Type"] == "Passive Income" and row["Description"] == tuple[0]: 
                         erg = True 
                     else: 
                         pass
@@ -74,7 +74,7 @@ def check_existing(tuple, active) -> bool:
                 if row["Amount"] == "Amount":
                     pass 
                 else: 
-                    if row["Amount"] == str(tuple[1]) and row["Month"] == str(date.strftime("%B")): 
+                    if row["Amount"] == str(tuple[1]) and row["Month"] == str(date.strftime("%B")) and row["Type"] == "Passive Income" and row["Description"] == tuple[0]: 
                         erg = True 
                     else: 
                         pass
@@ -91,7 +91,7 @@ def check_existing(tuple, active) -> bool:
                 if row["Amount"] == "Amount":
                     pass 
                 else: 
-                    if row["Amount"] == str(tuple[1]) and row["Year"] == str(date.today().year): 
+                    if row["Amount"] == str(tuple[1]) and row["Year"] == str(date.today().year) and row["Type"] == "Passive Income" and row["Description"] == tuple[0]: 
                         erg = True 
                     else: 
                         pass
@@ -117,5 +117,5 @@ def check_transmissions(active) -> bool:
                 month = datetime_object.strftime("%B")
                 year = date.today().year
 
-                writer.writerow({"Amount": tuple[1], "Day": day, "Month": month, "Year": year, "Type": tuple[0], "Description": ""})
+                writer.writerow({"Amount": tuple[1], "Day": day, "Month": month, "Year": year, "Type": "Passive Income", "Description": tuple[0]})
 
