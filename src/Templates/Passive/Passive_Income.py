@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QDialog, QPushButton, QComboBox, QLineEdit, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QMessageBox, QSpinBox
+from PyQt5.QtWidgets import QDialog, QPushButton, QComboBox, QLineEdit, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QMessageBox, QDoubleSpinBox
 from PyQt5.QtGui import QIcon
 
 from ...vars import Money_Logo, routines, types, Information_Logo
@@ -24,7 +24,7 @@ class Passive_Window(QDialog):
         self.amount_label = QLabel(self)
         self.amount_label.setText("Amount")
 
-        self.amount = QSpinBox(self)
+        self.amount = QDoubleSpinBox(self)
         self.amount.setMinimum(1)
         self.amount.setMaximum(100000)
         self.amount.setToolTip("Enter the amount which will be automatically added to your income")

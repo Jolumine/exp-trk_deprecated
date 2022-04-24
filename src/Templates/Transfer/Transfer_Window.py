@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QDialog, QLineEdit, QComboBox, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QSpinBox, QMessageBox
+from PyQt5.QtWidgets import QDialog, QLineEdit, QComboBox, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QDoubleSpinBox, QMessageBox
 from PyQt5.QtGui import QIcon
 
 from ...vars import Transfer_Logo, Warning_Logo, field_names
@@ -39,7 +39,7 @@ class Transfer_Window(QDialog):
         self.amount_label = QLabel(self)
         self.amount_label.setText("Amount: ")
 
-        self.amount = QSpinBox(self)
+        self.amount = QDoubleSpinBox(self)
         self.amount.setMaximum(3000)
         self.amount.setMinimum(1)
         self.amount.setToolTip("Enter the amount you want to transfer")
@@ -76,8 +76,7 @@ class Transfer_Window(QDialog):
         msg = QMessageBox()
         msg.setWindowTitle("Information")
         msg.setWindowIcon(QIcon(Warning_Logo))
-        msg.setText("The name already exists!")
-        msg.setInformativeText("Do you want to overwrite it?")
+        msg.setText("Please confirm transaction:")
         msg.setStandardButtons(QMessageBox.Cancel | QMessageBox.Yes)
         msg.setDefaultButton(QMessageBox.Cancel)
         rep = msg.exec_()

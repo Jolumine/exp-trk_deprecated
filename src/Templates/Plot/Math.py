@@ -20,7 +20,7 @@ class Math:
                     for row in reader:
                         for i in wo_month: 
                             if row["Month"] == i and row["Year"] == year and row["Type"] == type: 
-                                show_dict[i] += int(row["Amount"])
+                                show_dict[i] += float(row["Amount"])
                             else: 
                                 pass
 
@@ -45,7 +45,7 @@ class Math:
                     for row in reader:
                         for i in wo_month: 
                             if row["Month"] == i and row["Year"] == year and row["Type"] == type: 
-                                show_dict[i] += int(row["Amount"])
+                                show_dict[i] += float(row["Amount"])
                             else: 
                                 pass
 
@@ -72,7 +72,7 @@ class Math:
                     for row in reader:
                         for i in wo_month: 
                             if row["Month"] == i and row["Year"] == year: 
-                                show_dict[i] += int(row["Amount"])
+                                show_dict[i] += float(row["Amount"])
                             else: 
                                 pass
 
@@ -97,7 +97,7 @@ class Math:
                     for row in reader:
                         for i in wo_month: 
                             if row["Month"] == i and row["Year"] == year: 
-                                show_dict[i] += int(row["Amount"])
+                                show_dict[i] += float(row["Amount"])
                             else: 
                                 pass
 
@@ -121,7 +121,7 @@ class Math:
                     for row in reader:
                         for i in wo_month: 
                             if row["Month"] == i and row["Type"] == type: 
-                                show_dict[i] += int(row["Amount"])
+                                show_dict[i] += float(row["Amount"])
                             else: 
                                 pass
 
@@ -146,7 +146,7 @@ class Math:
                     for row in reader:
                         for i in wo_month: 
                             if row["Month"] == i and row["Type"] == type: 
-                                show_dict[i] += int(row["Amount"])
+                                show_dict[i] += float(row["Amount"])
                             else: 
                                 pass
 
@@ -170,7 +170,7 @@ class Math:
                     for row in reader:
                         for i in wo_month: 
                             if row["Month"] == i: 
-                                show_dict[i] += int(row["Amount"])
+                                show_dict[i] += float(row["Amount"])
                             else: 
                                 pass
 
@@ -195,7 +195,7 @@ class Math:
                     for row in reader:
                         for i in wo_month: 
                             if row["Month"] == i: 
-                                show_dict[i] += int(row["Amount"])
+                                show_dict[i] += float(row["Amount"])
                             else: 
                                 pass
 
@@ -232,7 +232,7 @@ class Math:
             for row in reader_rev:
                 for i in wo_month: 
                     if row["Month"] == i: 
-                        dict_rev[i] += int(row["Amount"])
+                        dict_rev[i] += float(row["Amount"])
                     else: 
                         pass
 
@@ -243,7 +243,7 @@ class Math:
             for row in reader_exp:
                 for i in wo_month: 
                     if row["Month"] == i: 
-                        dict_exp[i] += int(row["Amount"])
+                        dict_exp[i] += float(row["Amount"])
                     else: 
                         pass
 
