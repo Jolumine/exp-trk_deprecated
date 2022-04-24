@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QLabel, QDialog, QSpinBox, QComboBox, QTextEdit, QPushButton, QHBoxLayout, QVBoxLayout
+from PyQt5.QtWidgets import QLabel, QDialog, QDoubleSpinBox, QComboBox, QTextEdit, QPushButton, QHBoxLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
 
 from ...vars import days, months, years, types, Add_Logo, field_names
@@ -15,7 +15,7 @@ class Add_Expense(QDialog):
         self.amount_label = QLabel(self)
         self.amount_label.setText("Amount: ")
 
-        self.amount = QSpinBox(self)
+        self.amount = QDoubleSpinBox(self)
         self.amount.setToolTip("Enter the amount")
 
         self.day_label = QLabel(self)

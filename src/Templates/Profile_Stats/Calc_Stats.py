@@ -15,7 +15,7 @@ def get_income_sum(path) -> int:
             if row["Amount"] == "Amount":
                 pass 
             else:
-                sum+=int(row["Amount"])
+                sum+=float(row["Amount"])
 
         f.close()
 
@@ -30,7 +30,7 @@ def get_expenses_sum(path) -> int:
             if row["Amount"] == "Amount":
                 pass 
             else:
-                sum+=int(row["Amount"])
+                sum+=float(row["Amount"])
 
         f.close()
 
@@ -45,7 +45,7 @@ def get_sum_passive(path) -> int:
         f.close()
 
     for k in parsed["passive income"]:
-        sum+=int(parsed["passive income"][k]["Amount"])
+        sum+=float(parsed["passive income"][k]["Amount"])
 
     return sum
 
