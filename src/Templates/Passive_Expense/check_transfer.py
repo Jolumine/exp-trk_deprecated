@@ -1,10 +1,9 @@
-import json 
+import json
 import os 
 import csv
 from datetime import date, datetime
 
-
-field_names = ["Amount", "Day", "Month", "Year", "Type", "Description"]
+from ...vars import field_names
 
 
 def get_passive_sources(active) -> list:
@@ -16,22 +15,21 @@ def get_passive_sources(active) -> list:
         parsed_data = json.load(file)
         file.close()
 
-    for k in parsed_data["passive income"]:
-        all_infos.append((k, parsed_data["passive income"][k]["Amount"], parsed_data["passive income"][k]["Repeated"]))
+    for k in parsed_data["passive expense"]:
+        all_infos.append((k, parsed_data["passive expense"][k]["Amount"], parsed_data["passive expense"][k]["Repeated"]))
 
     return all_infos
 
 
-
-def check_existing(tuple, active) -> bool:
+def is_existing(tuple, active) -> bool:
     date = datetime.now()
 
-    income_csv_file = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users\\{active}\\income.csv"
+    expense_csv_file = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users\\{active}\\expenses.csv"
 
     routine = tuple[2]
 
     if routine == "daily":
-        with open(income_csv_file, "r") as file:
+        with open(expense_csv_file, "r") as file:
             reader = csv.DictReader(file, fieldnames=field_names)
 
             erg = False
@@ -40,7 +38,7 @@ def check_existing(tuple, active) -> bool:
                 if row["Amount"] == "Amount":
                     pass 
                 else: 
-                    if row["Amount"] == str(tuple[1]) and row["Day"] == str(date.today().day) and row["Type"] == "Passive Income" and row["Description"] == tuple[0]: 
+                    if row["Amount"] == str(tuple[1]) and row["Day"] == str(date.today().day) and row["Type"] == "Passive Expense" and row["Description"] == tuple[0]: 
                         erg = True 
                     else: 
                         pass
@@ -48,7 +46,7 @@ def check_existing(tuple, active) -> bool:
         return erg 
     
     elif routine == "weekly":
-        with open(income_csv_file, "r") as file:
+        with open(expense_csv_file, "r") as file:
             reader = csv.DictReader(file, fieldnames=field_names)
 
             erg = False
@@ -57,7 +55,7 @@ def check_existing(tuple, active) -> bool:
                 if row["Amount"] == "Amount":
                     pass 
                 else: 
-                    if row["Amount"] == str(tuple[1]) and row["Day"] > str(date.today().day-7) and row["Type"] == "Passive Income" and row["Description"] == tuple[0]: 
+                    if row["Amount"] == str(tuple[1]) and row["Day"] > str(date.today().day-7) and row["Type"] == "Passive Expense" and row["Description"] == tuple[0]: 
                         erg = True 
                     else: 
                         pass
@@ -65,7 +63,7 @@ def check_existing(tuple, active) -> bool:
         return erg 
 
     elif routine == "monthly":
-        with open(income_csv_file, "r") as file:
+        with open(expense_csv_file, "r") as file:
             reader = csv.DictReader(file, fieldnames=field_names)
 
             erg = False
@@ -74,7 +72,7 @@ def check_existing(tuple, active) -> bool:
                 if row["Amount"] == "Amount":
                     pass 
                 else: 
-                    if row["Amount"] == str(tuple[1]) and row["Month"] == str(date.strftime("%B")) and row["Type"] == "Passive Income" and row["Description"] == tuple[0]: 
+                    if row["Amount"] == str(tuple[1]) and row["Month"] == str(date.strftime("%B")) and row["Type"] == "Passive Expense" and row["Description"] == tuple[0]: 
                         erg = True 
                     else: 
                         pass
@@ -82,7 +80,7 @@ def check_existing(tuple, active) -> bool:
         return erg 
 
     else: 
-        with open(income_csv_file, "r") as file:
+        with open(expense_csv_file, "r") as file:
             reader = csv.DictReader(file, fieldnames=field_names)
 
             erg = False
@@ -91,31 +89,28 @@ def check_existing(tuple, active) -> bool:
                 if row["Amount"] == "Amount":
                     pass 
                 else: 
-                    if row["Amount"] == str(tuple[1]) and row["Year"] == str(date.today().year) and row["Type"] == "Passive Income" and row["Description"] == tuple[0]: 
+                    if row["Amount"] == str(tuple[1]) and row["Year"] == str(date.today().year) and row["Type"] == "Passive Expense" and row["Description"] == tuple[0]: 
                         erg = True 
                     else: 
                         pass
         
         return erg 
 
-     
-
-def check_transmissions(active) -> bool:
+def check_transfer_expenses(active):
     datetime_object = datetime.strptime(str(datetime.today().month), "%m")
     all = get_passive_sources(active)
     
-    income_csv_file = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users\\{active}\\income.csv"
+    expense_csv_file = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users\\{active}\\expenses.csv"
 
     for tuple in all: 
-        if check_existing(tuple, active):
+        if is_existing(tuple, active):
             pass
         else: 
-            with open(income_csv_file, "a") as file: 
+            with open(expense_csv_file, "a") as file: 
                 writer = csv.DictWriter(file, fieldnames=field_names, delimiter=",", lineterminator="\n")
 
                 day = date.today().day
                 month = datetime_object.strftime("%B")
                 year = date.today().year
 
-                writer.writerow({"Amount": tuple[1], "Day": day, "Month": month, "Year": year, "Type": "Passive Income", "Description": tuple[0]})
-
+                writer.writerow({"Amount": tuple[1], "Day": day, "Month": month, "Year": year, "Type": "Passive Expense", "Description": tuple[0]}) 

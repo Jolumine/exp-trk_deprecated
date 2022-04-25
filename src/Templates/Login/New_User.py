@@ -121,7 +121,8 @@ class New_User(QDialog):
                 "Password": password, 
                 "Firstname": firstname, 
                 "Lastname": lastname,
-                "passive income": {}
+                "passive income": {},
+                "passive expense": {}
             }
 
 
