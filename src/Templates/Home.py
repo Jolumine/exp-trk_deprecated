@@ -4,12 +4,14 @@ from PyQt5.QtGui import QIcon
 from .Expense.Home_Expense import Home_Expense
 from .Revenue.Home_Income import Home_Income
 from .Plot.Plot_Window import Plot_Window
-from .Profile_Stats.Statisitic_Window import Statistic_Window
-from .Settings.Settings_Window import Settings_Window
-from .Export.Export_Window import Export_Window
+
+from .Transfer.Transfer_Window import Transfer_Window
 from .Passive_Income.Passive_Income import Passive_Income_Window
 from .Passive_Expense.Passive_Expense import Passive_Expense_Window
-from .Transfer.Transfer_Window import Transfer_Window
+
+from .Export.Export_Window import Export_Window
+from .Profile_Stats.Statisitic_Window import Statistic_Window
+from .Settings.Settings_Window import Settings_Window
 
 from ..const import Main_Logo
 
@@ -35,9 +37,9 @@ class Root_Window(QDialog):
         self.pass_label = QLabel(self)
         self.pass_label.setText("Passive income: ")
 
-        self.pass_btn = QPushButton("Passive Income", self)
-        self.pass_btn.setToolTip("Click to add a source of passive income")
-        self.pass_btn.clicked.connect(self.passive_income)
+        self.pass_btn_income = QPushButton("Passive Income", self)
+        self.pass_btn_income.setToolTip("Click to add a source of passive income")
+        self.pass_btn_income.clicked.connect(self.passive_income)
 
         self.pass_label_exp = QLabel(self)
         self.pass_label_exp.setText("Passive Expense: ")
