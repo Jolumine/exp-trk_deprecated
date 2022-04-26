@@ -3,7 +3,7 @@ from PyQt5.QtGui import QIcon
 from Crypto.PublicKey import RSA
 
 from ...algos import get_new_number
-from ...vars import New_User_Logo, Wrong_Logo, log_file, std_settings
+from ...const import New_User_Logo, Wrong_Logo, log_file, std_settings
 
 import os 
 import json 

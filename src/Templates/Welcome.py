@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QLineEdit, QDialog, QPushButton, QHBoxLayout, QVBoxLayout, QLabel
 from PyQt5.QtGui import QIcon
 
-from ..vars import welcome_logo, log_file, Wrong_Logo, Eye_Logo
+from ..const import welcome_logo, log_file, Wrong_Logo, Eye_Logo
 
 import logging 
 import json 

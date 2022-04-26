@@ -5,7 +5,7 @@ from ..Admin.Admin_Login import Admin_Login
 from .New_User import New_User
 from ..Home import Root_Window
 
-from ...vars import Login_Icon, Eye_Logo, Wrong_Logo, log_file
+from ...const import Login_Icon, Eye_Logo, Wrong_Logo, log_file
 
 from .security import check_login
 from ...algos import get_folder_number

@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QDialog, QLineEdit, QPushButton, QVBoxLayout, QMessa
 from PyQt5.QtGui import QIcon
 
 from ...algos import get_folder_number, get_password 
-from ...vars import Wrong_Logo, log_file, Mod_Icon
+from ...const import Wrong_Logo, log_file, Mod_Icon
 
 import os
 import json

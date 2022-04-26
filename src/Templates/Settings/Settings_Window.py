@@ -3,7 +3,7 @@ from tkinter import dialog
 from PyQt5.QtWidgets import QPushButton, QDialog, QComboBox, QCheckBox, QLabel, QHBoxLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
 
-from ...vars import Settings_Logo, std_settings
+from ...const import Settings_Logo, std_settings
 
 from .Delete_Passive import Delete_Window
 

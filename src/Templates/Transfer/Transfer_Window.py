@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QDialog, QLineEdit, QComboBox, QPushButton, QVBoxLayout, QHBoxLayout, QLabel, QDoubleSpinBox, QMessageBox
 from PyQt5.QtGui import QIcon
 
-from ...vars import Transfer_Logo, Warning_Logo, field_names
+from ...const import Transfer_Logo, Warning_Logo, field_names
 from ...algos import get_username_from_number, get_all_user, get_number_from_username
 
 import csv 

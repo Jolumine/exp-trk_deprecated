@@ -11,7 +11,7 @@ from .Passive_Income.Passive_Income import Passive_Income_Window
 from .Passive_Expense.Passive_Expense import Passive_Expense_Window
 from .Transfer.Transfer_Window import Transfer_Window
 
-from ..vars import Main_Logo
+from ..const import Main_Logo
 
 class Root_Window(QDialog): 
     def __init__(self, active_user, parent=None): 

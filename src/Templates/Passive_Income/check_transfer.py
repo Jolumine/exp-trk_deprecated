@@ -3,7 +3,7 @@ import os
 import csv
 from datetime import date, datetime
 
-from ...vars import field_names
+from ...const import field_names
 
 def get_passive_sources(active) -> list:
     main_path = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users\\{active}\\data.json"

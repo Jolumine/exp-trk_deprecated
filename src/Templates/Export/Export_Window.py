@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QPushButton, QCheckBox, QLabel, QHBoxLayout, QVBoxLayout, QComboBox, QFileDialog, QDialog
 from PyQt5.QtGui import QIcon
 
-from ...vars import log_file, months_all, Export_Logo
+from ...const import log_file, months_all, Export_Logo
 
 import json
 import os

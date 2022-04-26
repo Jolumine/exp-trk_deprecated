@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout
 from PyQt5.QtGui import QIcon
 
-from ...vars import Money_Logo
+from ...const import Money_Logo
 from .Add_Expense import Add_Expense
 from .Delete_Expense import Delete_Expense
 
