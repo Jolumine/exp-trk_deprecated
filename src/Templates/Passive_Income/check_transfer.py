@@ -3,9 +3,7 @@ import os
 import csv
 from datetime import date, datetime
 
-
-field_names = ["Amount", "Day", "Month", "Year", "Type", "Description"]
-
+from ...const import field_names
 
 def get_passive_sources(active) -> list:
     main_path = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users\\{active}\\data.json"
@@ -23,7 +21,7 @@ def get_passive_sources(active) -> list:
 
 
 
-def check_existing(tuple, active) -> bool:
+def is_existing(tuple, active) -> bool:
     date = datetime.now()
 
     income_csv_file = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users\\{active}\\income.csv"
@@ -100,14 +98,14 @@ def check_existing(tuple, active) -> bool:
 
      
 
-def check_transmissions(active) -> bool:
+def check_transfer_income(active) -> bool:
     datetime_object = datetime.strptime(str(datetime.today().month), "%m")
     all = get_passive_sources(active)
     
     income_csv_file = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users\\{active}\\income.csv"
 
     for tuple in all: 
-        if check_existing(tuple, active):
+        if is_existing(tuple, active):
             pass
         else: 
             with open(income_csv_file, "a") as file: 

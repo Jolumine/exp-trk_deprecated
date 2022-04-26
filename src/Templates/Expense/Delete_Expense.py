@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QDialog, QComboBox, QPushButton, QVBoxLayout
 from PyQt5.QtGui import QIcon
 
-from ...vars import Delete_Logo, field_names
+from ...const import Delete_Logo, field_names
 
 import csv 
 import os 

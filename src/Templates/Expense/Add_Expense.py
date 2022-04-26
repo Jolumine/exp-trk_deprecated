@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QLabel, QDialog, QDoubleSpinBox, QComboBox, QTextEdit, QPushButton, QHBoxLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
 
-from ...vars import days, months, years, types, Add_Logo, field_names
+from ...const import days, months, years, types, Add_Logo, field_names
 
 import csv 
 import os 

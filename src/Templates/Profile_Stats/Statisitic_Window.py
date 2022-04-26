@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QLabel, QLineEdit, QDialog, QHBoxLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 
-from ...vars import log_file, Stats_Logo
+from ...const import log_file, Stats_Logo
 from .Calc_Stats import get_expenses_sum, get_income_sum, get_sum_passive
 
 import os

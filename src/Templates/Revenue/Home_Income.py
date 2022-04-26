@@ -4,7 +4,7 @@ from PyQt5.QtGui import QIcon
 from .Add_Revenue import Add_Income
 from .Delete_Revenue import Delete_Revenue
 
-from ...vars import Money_Logo
+from ...const import Money_Logo
 
 class Home_Income(QDialog): 
     def __init__(self, active_user, parent=None): 

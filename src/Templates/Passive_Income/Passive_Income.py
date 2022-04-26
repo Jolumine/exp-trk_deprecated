@@ -1,13 +1,13 @@
 from PyQt5.QtWidgets import QDialog, QPushButton, QComboBox, QLineEdit, QTextEdit, QLabel, QVBoxLayout, QHBoxLayout, QMessageBox, QDoubleSpinBox
 from PyQt5.QtGui import QIcon
 
-from ...vars import Money_Logo, routines, types, Information_Logo
+from ...const import Money_Logo, routines, types, Information_Logo
 
 import json
 import os
 
 
-class Passive_Window(QDialog):
+class Passive_Income_Window(QDialog):
     def __init__(self, active, parent=None):
         super().__init__(parent)
 

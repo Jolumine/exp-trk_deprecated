@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QDialog, QComboBox, QLabel, QPushButton, QHBoxLayout
 from PyQt5.QtGui import QIcon
 
 
-from ...vars import years_all, types_all, Graph_Icon
+from ...const import years_all, types_all, Graph_Icon
 from .Math import Math
 
 class Plot_Window(QDialog):

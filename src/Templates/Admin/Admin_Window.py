@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QDialog, QPushButton, QComboBox, QVBoxLayout, QLabel
 from PyQt5.QtGui import QIcon
 
-from ...vars import Admin_Logo, Wrong_Logo
+from ...const import Admin_Logo, Wrong_Logo
 from .Change_User_Infos import Change_Window
 from ...algos import get_all_user, get_folder_number, get_password
 
