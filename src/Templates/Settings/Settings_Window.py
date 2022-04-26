@@ -1,11 +1,10 @@
-from msilib.schema import PatchPackage
-from tkinter import dialog
 from PyQt5.QtWidgets import QPushButton, QDialog, QComboBox, QCheckBox, QLabel, QHBoxLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
 
 from ...const import Settings_Logo, std_settings
 
 from .Delete_Passive import Delete_Window
+from .Change_User_Infos import Change_Window
 
 import json
 import os
@@ -43,6 +42,13 @@ class Settings_Window(QDialog):
         self.darkmode = QCheckBox(self)
         self.darkmode.setChecked(self.parsed["darkmode"])
 
+        self.mod_label = QLabel(self)
+        self.mod_label.setText("Modifiy: ")
+
+        self.mod_btn = QPushButton("Modifiy", self)
+        self.mod_btn.setToolTip("Click to open the menu with which you can modifiy your information")
+        self.mod_btn.clicked.connect(self.mod)
+
         self.passive_label = QLabel(self)
         self.passive_label.setText("Delete Passive Income: ")
 
@@ -73,6 +79,10 @@ class Settings_Window(QDialog):
         dark_layout.addWidget(self.darkmode_label)
         dark_layout.addWidget(self.darkmode)
 
+        mod_layout = QHBoxLayout()
+        mod_layout.addWidget(self.mod_label)
+        mod_layout.addWidget(self.mod_btn)
+
         del_layout = QHBoxLayout()
         del_layout.addWidget(self.passive_label)
         del_layout.addWidget(self.passivebtn)
@@ -85,6 +95,7 @@ class Settings_Window(QDialog):
         root.addLayout(currency_layout)
         root.addLayout(lang_layout)
         root.addLayout(dark_layout)
+        root.addLayout(mod_layout)
         root.addLayout(del_layout)
         root.addLayout(reset_layout)
         root.addWidget(self.savebtn)
@@ -128,3 +139,6 @@ class Settings_Window(QDialog):
 
     def del_passive(self):
         dialog = Delete_Window(self.active) 
+
+    def mod(self):
+        dialog = Change_Window(self.active) 
