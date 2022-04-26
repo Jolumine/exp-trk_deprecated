@@ -7,7 +7,8 @@ from .Plot.Plot_Window import Plot_Window
 from .Profile_Stats.Statisitic_Window import Statistic_Window
 from .Settings.Settings_Window import Settings_Window
 from .Export.Export_Window import Export_Window
-from .Passive.Passive_Income import Passive_Window
+from .Passive_Income.Passive_Income import Passive_Income_Window
+from .Passive_Expense.Passive_Expense import Passive_Expense_Window
 from .Transfer.Transfer_Window import Transfer_Window
 
 from ..vars import Main_Logo
@@ -34,9 +35,16 @@ class Root_Window(QDialog):
         self.pass_label = QLabel(self)
         self.pass_label.setText("Passive income: ")
 
-        self.pass_btn = QPushButton("Passive", self)
+        self.pass_btn = QPushButton("Passive Income", self)
         self.pass_btn.setToolTip("Click to add a source of passive income")
-        self.pass_btn.clicked.connect(self.passive)
+        self.pass_btn.clicked.connect(self.passive_income)
+
+        self.pass_label_exp = QLabel(self)
+        self.pass_label_exp.setText("Passive Expense: ")
+
+        self.pass_btn_exp = QPushButton("Passive Expense", self)
+        self.pass_btn_exp.setToolTip("Click to add a source of passive expense")
+        self.pass_btn_exp.clicked.connect(self.passive_expense)
 
         self.plot_label = QLabel(self)
         self.plot_label.setText("Plot Menu: ")
@@ -85,6 +93,10 @@ class Root_Window(QDialog):
         pass_layout.addWidget(self.pass_label)
         pass_layout.addWidget(self.pass_btn)
 
+        pass_layout_exp = QHBoxLayout()
+        pass_layout_exp.addWidget(self.pass_label_exp)
+        pass_layout_exp.addWidget(self.pass_btn_exp)
+
         plt_layout = QHBoxLayout()
         plt_layout.addWidget(self.plot_label)
         plt_layout.addWidget(self.Plot)
@@ -109,6 +121,7 @@ class Root_Window(QDialog):
         root.addLayout(expense_layout)
         root.addLayout(rev_layout)
         root.addLayout(pass_layout)
+        root.addLayout(pass_layout_exp)
         root.addLayout(plt_layout)
         root.addLayout(trans_layout)
         root.addLayout(stats_layout)
@@ -128,8 +141,11 @@ class Root_Window(QDialog):
     def revenue(self): 
         dialog = Home_Income(self.active_user)
 
-    def passive(self):
-        dialog = Passive_Window(self.active_user)
+    def passive_income(self):
+        dialog = Passive_Income_Window(self.active_user)
+
+    def passive_expense(self):
+        dialog = Passive_Expense_Window(self.active_user)
 
     def plot(self): 
         dialog = Plot_Window(self.active_user) 

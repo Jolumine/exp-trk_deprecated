@@ -7,7 +7,7 @@ import json
 import os
 
 
-class Passive_Window(QDialog):
+class Passive_Income_Window(QDialog):
     def __init__(self, active, parent=None):
         super().__init__(parent)
 

@@ -9,7 +9,9 @@ from ...vars import Login_Icon, Eye_Logo, Wrong_Logo, log_file
 
 from .security import check_login
 from ...algos import get_folder_number
-from ..Passive.check_transmission import check_transmissions
+
+from ..Passive_Income.check_transfer import check_transfer_income
+from ..Passive_Expense.check_transfer import check_transfer_expenses
 
 import logging 
 
@@ -72,7 +74,9 @@ class Login_Page(QDialog):
         folder_number = get_folder_number(username, password)
         if check_login(username, password): 
             self.close()
-            check_transmissions(folder_number)
+            check_transfer_expenses(folder_number)
+            check_transfer_income(folder_number)
+            
             logging.basicConfig(filename=log_file, encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
             logging.info(f"{username} is logged in.")
             root = Root_Window(folder_number)
