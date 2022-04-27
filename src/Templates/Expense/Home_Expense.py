@@ -1,9 +1,11 @@
 from PyQt5.QtWidgets import QDialog, QPushButton, QVBoxLayout
 from PyQt5.QtGui import QIcon
 
-from ...const import Money_Logo
 from .Add_Expense import Add_Expense
 from .Delete_Expense import Delete_Expense
+from ..Plot.Plot_Window import Plot_Window
+
+from ...const import Money_Logo
 
 import csv 
 import os 
@@ -22,7 +24,7 @@ class Home_Expense(QDialog):
         self.delete.setToolTip("Click to open the Delete Menu")
         self.delete.clicked.connect(self.Delete)
 
-        self.plot = QPushButton("Show Expenses", self)
+        self.plot = QPushButton("Plot Menu", self)
         self.plot.setToolTip("Click to show every Expense in a Graph")
         self.plot.clicked.connect(self.Show)
 
@@ -45,4 +47,4 @@ class Home_Expense(QDialog):
         delete = Delete_Expense(self.active)
 
     def Show(self):
-        pass 
+        dialog = Plot_Window(self.active) 

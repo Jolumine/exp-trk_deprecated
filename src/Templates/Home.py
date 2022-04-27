@@ -93,7 +93,7 @@ class Root_Window(QDialog):
 
         pass_layout = QHBoxLayout()
         pass_layout.addWidget(self.pass_label)
-        pass_layout.addWidget(self.pass_btn)
+        pass_layout.addWidget(self.pass_btn_income)
 
         pass_layout_exp = QHBoxLayout()
         pass_layout_exp.addWidget(self.pass_label_exp)
