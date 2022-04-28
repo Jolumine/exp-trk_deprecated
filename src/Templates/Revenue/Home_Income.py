@@ -3,6 +3,7 @@ from PyQt5.QtGui import QIcon
 
 from .Add_Revenue import Add_Income
 from .Delete_Revenue import Delete_Revenue
+from ..Plot.Plot_Window import Plot_Window
 
 from ...const import Money_Logo
 
@@ -12,22 +13,22 @@ class Home_Income(QDialog):
         
         self.active = active_user
 
-        self.addButton = QPushButton("Add Income", self)
-        self.addButton.setToolTip("Click to open the Add Menu")
-        self.addButton.clicked.connect(self.add)
+        self.add_btn = QPushButton("Add Income", self)
+        self.add_btn.setToolTip("Click to open the Add Menu")
+        self.add_btn.clicked.connect(self.add)
 
-        self.delButton = QPushButton("Delete Income", self)
-        self.delButton.setToolTip("Click to open the Delete Menu")
-        self.delButton.clicked.connect(self.delete)
+        self.del_btn = QPushButton("Delete Income", self)
+        self.del_btn.setToolTip("Click to open the Delete Menu")
+        self.del_btn.clicked.connect(self.delete)
 
-        self.plot = QPushButton("Show", self)
-        self.plot.setToolTip("Click to open the Plot Menu")
-        self.plot.clicked.connect(self.PlotDial)
+        self.plot_btn = QPushButton("Show", self)
+        self.plot_btn.setToolTip("Click to open the Plot Menu")
+        self.plot_btn.clicked.connect(self.plot)
 
         layout = QVBoxLayout()
-        layout.addWidget(self.addButton)
-        layout.addWidget(self.delButton)
-        layout.addWidget(self.plot)
+        layout.addWidget(self.add_btn)
+        layout.addWidget(self.del_btn)
+        layout.addWidget(self.plot_btn)
 
         self.setWindowTitle("Income")
         self.setWindowIcon(QIcon(Money_Logo))
@@ -36,10 +37,10 @@ class Home_Income(QDialog):
         self.exec_()
 
     def add(self): 
-        dial = Add_Income(self.active) 
+        dialog = Add_Income(self.active) 
 
     def delete(self): 
-        dial = Delete_Revenue(self.active) 
+        dialog = Delete_Revenue(self.active) 
 
-    def PlotDial(self): 
-        pass 
+    def plot(self): 
+        dialog = Plot_Window(self.active) 

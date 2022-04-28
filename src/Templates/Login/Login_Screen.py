@@ -5,7 +5,7 @@ from ..Admin.Admin_Login import Admin_Login
 from .New_User import New_User
 from ..Home import Root_Window
 
-from ...const import Login_Icon, Eye_Logo, Wrong_Logo, log_file
+from ...const import Login_Icon, Eye_Logo, Wrong_Logo, log_file, Exit_Logo, Next_Logo, New_User_Logo, Admin_Logo
 
 from .security import check_login
 from ...algos import get_folder_number
@@ -36,18 +36,22 @@ class Login_Page(QDialog):
 
         self.login = QPushButton("Login", self)
         self.login.setToolTip("Click to login")
+        self.login.setIcon(QIcon(Next_Logo))
         self.login.clicked.connect(self.loginFunction)
 
         self.admin = QPushButton("Admin", self)
         self.admin.setToolTip("Click to get access to the Admin Window")
+        self.admin.setIcon(QIcon(Admin_Logo))
         self.admin.clicked.connect(self.Admin)
 
         self.new = QPushButton("New User", self)
         self.new.setToolTip("Click to create a new User")
+        self.new.setIcon(QIcon(New_User_Logo))
         self.new.clicked.connect(self.newUser)
         
         self.exit = QPushButton("Exit", self)
         self.exit.setToolTip("Click to exit")
+        self.exit.setIcon(QIcon(Exit_Logo))
         self.exit.clicked.connect(self.close)
 
         password = QHBoxLayout()
