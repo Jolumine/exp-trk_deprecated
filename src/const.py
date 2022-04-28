@@ -18,7 +18,7 @@ Wrong_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\reso
 
 Login_Icon = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Login_Icon.png"
 
-New_User_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Login_Icon.png"
+New_User_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\New_User_Logo.png"
 
 welcome_logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Welcome.png"
 
@@ -37,6 +37,12 @@ Transfer_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\r
 Warning_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Warning_Logo.png"
 
 Stats_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Stats_Logo.png"
+
+Exit_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\Local\\Expense_Tracker\\resources\\Logos\\Exit_Logo.png"
+
+Next_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\Local\\Expense_Tracker\\resources\\Logos\\Next_Logo.png"
+
+Menu_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\Local\\Expense_Tracker\\resources\\Logos\\Menu_Logo.png"
 
 # Const 
 
