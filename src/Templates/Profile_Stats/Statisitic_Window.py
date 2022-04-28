@@ -160,18 +160,14 @@ class Statistic_Window(QDialog):
         graph_1.addWidget(self.chartview_normal)
         graph_1.addWidget(self.chartview_passive)
 
-        graph_2 = QVBoxLayout()
-        #graph_2.addWidget(self.chartview_passive)
-
         root = QHBoxLayout()
         root.addLayout(stats)
         root.addLayout(graph_1)
-        root.addLayout(graph_2)
 
         # Window Settings
 
         self.setWindowTitle("Profile Statistic")
-        self.setGeometry(400, 400, 450, 550)
+        self.setGeometry(300, 300, 450, 450)
         self.setLayout(root)
         self.setWindowIcon(QIcon(Stats_Logo))
         self.exec_()
