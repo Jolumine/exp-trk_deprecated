@@ -17,6 +17,7 @@ class Add_Expense(QDialog):
 
         self.amount = QDoubleSpinBox(self)
         self.amount.setToolTip("Enter the amount")
+        self.amount.setMaximum(10000)
 
         self.day_label = QLabel(self)
         self.day_label.setText("Day: ")
