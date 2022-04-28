@@ -22,7 +22,6 @@ class Setup:
     Transfer_Logo_Link = "https://cdn-icons-png.flaticon.com/512/876/876784.png"
     Warning_Logo_Link = "https://cdn-icons-png.flaticon.com/512/159/159469.png"
     Stats_Logo_Link = "https://cdn-icons-png.flaticon.com/512/876/876171.png"
-
     Next_Logo_Link = "https://cdn-icons-png.flaticon.com/512/318/318476.png"
     Menu_Logo_Link = "https://cdn-icons-png.flaticon.com/512/56/56763.png"
     Exit_Logo_Link = "https://cdn-icons-png.flaticon.com/512/1286/1286853.png"
@@ -95,10 +94,9 @@ class Setup:
             urllib.request.urlretrieve(self.Transfer_Logo_Link, f'{self.root+"/resources/"}Logos/Transfer_Icon.png')
             urllib.request.urlretrieve(self.Warning_Logo_Link, f'{self.root+"/resources/"}Logos/Warning_Logo.png')
             urllib.request.urlretrieve(self.Stats_Logo_Link, f'{self.root+"/resources/"}Logos/Stats_Logo.png')
-
-            urllib.request.urlretrieve(self.Stats_Logo_Link, f'{self.root+"/resources/"}Logos/Next_Logo.png')
-            urllib.request.urlretrieve(self.Stats_Logo_Link, f'{self.root+"/resources/"}Logos/Menu_Logo.png')
-            urllib.request.urlretrieve(self.Stats_Logo_Link, f'{self.root+"/resources/"}Logos/Exit_Logo.png')
+            urllib.request.urlretrieve(self.Next_Logo_Link, f'{self.root+"/resources/"}Logos/Next_Logo.png')
+            urllib.request.urlretrieve(self.Menu_Logo_Link, f'{self.root+"/resources/"}Logos/Menu_Logo.png')
+            urllib.request.urlretrieve(self.Exit_Logo_Link, f'{self.root+"/resources/"}Logos/Exit_Logo.png')
 
             logging.basicConfig(filename=f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\logs.log", encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
             logging.info("Logo Download [OK]")
