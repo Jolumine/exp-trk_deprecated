@@ -1,9 +1,10 @@
-from PyQt5.QtWidgets import QLineEdit, QDialog, QPushButton, QVBoxLayout, QLabel, QHBoxLayout
+from ast import In
+from PyQt5.QtWidgets import QLineEdit, QDialog, QPushButton, QVBoxLayout, QLabel, QHBoxLayout, QMessageBox
 from PyQt5.QtGui import QIcon
 from Crypto.PublicKey import RSA
 
 from ...algos import get_new_number
-from ...const import New_User_Logo, Wrong_Logo, log_file, std_settings, Gen_Logo
+from ...const import New_User_Logo, Wrong_Logo, log_file, std_settings, Gen_Logo, Information_Logo
 from .security import get_hash
 
 import os 
@@ -98,62 +99,75 @@ class New_User(QDialog):
             info.exec_()
 
         else: 
-            folder_name = get_new_number()
+            msg = QMessageBox()
+            msg.setWindowTitle("Confirm")
+            msg.setWindowIcon(QIcon(Information_Logo))
+            msg.setText("Make sure you write your password somewhere.")
+            msg.setInformativeText("You won't be able to see it again.")
+            msg.setStandardButtons(QMessageBox.Cancel | QMessageBox.Yes)
+            msg.setDefaultButton(QMessageBox.Cancel)
+            rep = msg.exec_()
 
-            os.chdir(self.root_folder+"/users")
+            if rep == QMessageBox.Cancel:
+                msg.close()
+                pass 
+            else:                  
+                folder_name = get_new_number()
 
-            os.mkdir(folder_name) 
+                os.chdir(self.root_folder+"/users")
 
-            os.chdir(self.root_folder+"/users/"+folder_name)
+                os.mkdir(folder_name) 
 
-            os.mkdir("keys")
+                os.chdir(self.root_folder+"/users/"+folder_name)
 
-            with open(self.root_folder+"\\users\\"+folder_name+"\\settings.json", "w") as sett: 
-                parsed = json.dumps(std_settings, indent=4, sort_keys=False)
-                sett.write(parsed)
-                sett.close()
+                os.mkdir("keys")
 
-            exp_file = open(self.root_folder+"\\users\\"+folder_name+"\\expenses.csv", "w")
-            exp_file.write("Amount,Day,Month,Year,Type,Description\n")
-            exp_file.close()
+                with open(self.root_folder+"\\users\\"+folder_name+"\\settings.json", "w") as sett: 
+                    parsed = json.dumps(std_settings, indent=4, sort_keys=False)
+                    sett.write(parsed)
+                    sett.close()
 
-            in_file = open(self.root_folder+"\\users\\"+folder_name+"\\income.csv", "w")
-            in_file.write("Amount,Day,Month,Year,Type,Description\n")
-            in_file.close()
+                exp_file = open(self.root_folder+"\\users\\"+folder_name+"\\expenses.csv", "w")
+                exp_file.write("Amount,Day,Month,Year,Type,Description\n")
+                exp_file.close()
 
-            seckey = RSA.generate(1024)
-            with open(f"{self.root_folder}/users/{folder_name}/keys/seckey.pem", "wb") as file: 
-                file.write(seckey.export_key(format="PEM"))
-                file.close()
+                in_file = open(self.root_folder+"\\users\\"+folder_name+"\\income.csv", "w")
+                in_file.write("Amount,Day,Month,Year,Type,Description\n")
+                in_file.close()
 
-            pblkey = seckey.publickey()
-            with open(f"{self.root_folder}/users/{folder_name}/keys/pblkey.pem", "wb") as file: 
-                file.write(pblkey.export_key(format="PEM"))
-                file.close()
+                seckey = RSA.generate(1024)
+                with open(f"{self.root_folder}/users/{folder_name}/keys/seckey.pem", "wb") as file: 
+                    file.write(seckey.export_key(format="PEM"))
+                    file.close()
 
-
-            dict = {
-                "Username": username, 
-                "Password": get_hash(password), 
-                "Firstname": firstname, 
-                "Lastname": lastname,
-                "passive income": {},
-                "passive expense": {}
-            }
+                pblkey = seckey.publickey()
+                with open(f"{self.root_folder}/users/{folder_name}/keys/pblkey.pem", "wb") as file: 
+                    file.write(pblkey.export_key(format="PEM"))
+                    file.close()
 
 
-            with open(self.root_folder+"\\users\\"+folder_name+"\\data.json", "w") as f: 
-                parsed = json.dumps(dict, indent=4, sort_keys=False)
+                dict = {
+                    "Username": username, 
+                    "Password": get_hash(password), 
+                    "Firstname": firstname, 
+                    "Lastname": lastname,
+                    "passive income": {},
+                    "passive expense": {}
+                }
 
-                f.write(parsed)
 
-                f.close()
+                with open(self.root_folder+"\\users\\"+folder_name+"\\data.json", "w") as f: 
+                    parsed = json.dumps(dict, indent=4, sort_keys=False)
 
-            self.close()
+                    f.write(parsed)
 
-        logging.basicConfig(filename=log_file, encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
-        logging.info(f"User with the username {username} has been created.")
-            
+                    f.close()
+
+                self.close()
+
+            logging.basicConfig(filename=log_file, encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
+            logging.info(f"User with the username {username} has been created.")
+                
 
             
 
