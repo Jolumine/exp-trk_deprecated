@@ -1,20 +1,24 @@
-from PyQt5.QtWidgets import QLineEdit, QDialog, QPushButton, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QLineEdit, QDialog, QPushButton, QVBoxLayout, QLabel, QHBoxLayout
 from PyQt5.QtGui import QIcon
 from Crypto.PublicKey import RSA
 
 from ...algos import get_new_number
-from ...const import New_User_Logo, Wrong_Logo, log_file, std_settings
+from ...const import New_User_Logo, Wrong_Logo, log_file, std_settings, Gen_Logo
 from .security import get_hash
 
 import os 
 import json 
 import logging 
+import string
+import random
 
 class New_User(QDialog): 
     def __init__(self): 
         super().__init__()
 
         self.root_folder = "C:\\Users\\Leonard Becker\\AppData/local\\Expense_Tracker"
+
+        self.values = string.ascii_uppercase + string.ascii_lowercase + string.digits + "!?*§$%&/()=\}][{€@"
 
         self.username = QLineEdit(self)
         self.username.setPlaceholderText("Username")
@@ -28,6 +32,13 @@ class New_User(QDialog):
         self.password = QLineEdit(self)
         self.password.setPlaceholderText("Password")
 
+        self.gen_password = QPushButton(self)
+        self.gen_password.setToolTip("Click to generate a strong password")
+        self.gen_password.clicked.connect(self.generate)
+        self.gen_password.setFixedHeight(38)
+        self.gen_password.setFixedWidth(38)
+        self.gen_password.setIcon(QIcon(Gen_Logo))
+
         self.confirm = QLineEdit(self)
         self.confirm.setPlaceholderText("Confirm Password")
 
@@ -35,11 +46,15 @@ class New_User(QDialog):
         self.create.setToolTip("Click to create your user")
         self.create.clicked.connect(self.add)
 
+        hbox = QHBoxLayout()
+        hbox.addWidget(self.password)
+        hbox.addWidget(self.gen_password)
+
         layout = QVBoxLayout()
         layout.addWidget(self.username)
         layout.addWidget(self.fname)
         layout.addWidget(self.lname)
-        layout.addWidget(self.password)
+        layout.addLayout(hbox)
         layout.addWidget(self.confirm)
         layout.addWidget(self.create)
 
@@ -142,4 +157,8 @@ class New_User(QDialog):
 
             
 
-        
+    def generate(self):
+        password = "".join(random.choice(self.values) for i in range(12))
+
+        self.password.setText(password)
+        self.confirm.setText(password)

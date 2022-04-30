@@ -44,6 +44,8 @@ Next_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\Local\\Expense_Tracker\\resou
 
 Menu_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\Local\\Expense_Tracker\\resources\\Logos\\Menu_Logo.png"
 
+Gen_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\Local\\Expense_Tracker\\resources\\Logos\\Gen_Logo.png"
+
 # Const 
 
 field_names = ["Amount", "Day", "Month", "Year", "Type", "Description"]
