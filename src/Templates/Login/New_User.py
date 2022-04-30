@@ -4,6 +4,7 @@ from Crypto.PublicKey import RSA
 
 from ...algos import get_new_number
 from ...const import New_User_Logo, Wrong_Logo, log_file, std_settings
+from .security import get_hash
 
 import os 
 import json 
@@ -118,7 +119,7 @@ class New_User(QDialog):
 
             dict = {
                 "Username": username, 
-                "Password": password, 
+                "Password": get_hash(password), 
                 "Firstname": firstname, 
                 "Lastname": lastname,
                 "passive income": {},

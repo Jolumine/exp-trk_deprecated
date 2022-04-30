@@ -1,5 +1,6 @@
 import json 
 import os 
+import hashlib
 
 
 def check_login(username, password) -> bool: 
@@ -13,7 +14,15 @@ def check_login(username, password) -> bool:
         with open(file, "r") as f: 
             parsed = json.load(f)
 
-            if parsed["Username"] == username and parsed["Password"] == password: 
+            if parsed["Username"] == username and parsed["Password"] == get_hash(password): 
                 return True
             else:
                 pass
+
+
+def get_hash(message: str):
+    message = message.encode("utf-8")
+
+    hash =  hashlib.sha3_512(message)
+
+    return hash.hexdigest()
