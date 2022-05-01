@@ -4,7 +4,7 @@ from PyQt5.QtGui import QIcon
 from Crypto.PublicKey import RSA
 
 from ...algos import get_new_number
-from ...const import New_User_Logo, Wrong_Logo, log_file, std_settings, Gen_Logo, Information_Logo
+from ...const import Copy_Logo, New_User_Logo, Wrong_Logo, log_file, std_settings, Gen_Logo, Information_Logo
 from .security import get_hash
 
 import os 
@@ -12,6 +12,7 @@ import json
 import logging 
 import string
 import random
+import clipboard
 
 class New_User(QDialog): 
     def __init__(self): 
@@ -40,6 +41,13 @@ class New_User(QDialog):
         self.gen_password.setFixedWidth(38)
         self.gen_password.setIcon(QIcon(Gen_Logo))
 
+        self.copy_to_clipbpoard = QPushButton(self)
+        self.copy_to_clipbpoard.setToolTip("Click to copy the password to the clipboard")
+        self.copy_to_clipbpoard.clicked.connect(self.toclip)
+        self.copy_to_clipbpoard.setFixedHeight(38)
+        self.copy_to_clipbpoard.setFixedWidth(38)
+        self.copy_to_clipbpoard.setIcon(QIcon(Copy_Logo))
+
         self.confirm = QLineEdit(self)
         self.confirm.setPlaceholderText("Confirm Password")
 
@@ -50,6 +58,7 @@ class New_User(QDialog):
         hbox = QHBoxLayout()
         hbox.addWidget(self.password)
         hbox.addWidget(self.gen_password)
+        hbox.addWidget(self.copy_to_clipbpoard)
 
         layout = QVBoxLayout()
         layout.addWidget(self.username)
@@ -176,3 +185,6 @@ class New_User(QDialog):
 
         self.password.setText(password)
         self.confirm.setText(password)
+
+    def toclip(self):
+        clipboard.copy(self.password.text())
