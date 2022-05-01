@@ -1,6 +1,8 @@
 import os 
 import json 
 
+from .Templates.Login.security import get_hash
+
 def get_all_user() -> list: 
     path = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users" 
 
@@ -15,7 +17,7 @@ def get_all_user() -> list:
             
         data = json.load(file)
              
-        parsed = [data["Username"], data["Firstname"], data["Lastname"], data["Password"]]
+        parsed = [data["Username"], data["Firstname"], data["Lastname"]]
 
         details.append(parsed)
         
@@ -44,24 +46,8 @@ def get_folder_number(username, password) -> str:
         with open(file, "r") as f: 
             parsed = json.load(f)
 
-            if parsed["Username"] == username and parsed["Password"] == password: 
+            if parsed["Username"] == username and parsed["Password"] == get_hash(password): 
                 return i
-            else:
-                pass
-
-def get_password(username) -> str:
-    path = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users" 
-
-    all = os.listdir(path)
-
-    for i in all: 
-        file = path + f"\\{i}\\data.json"
-
-        with open(file, "r") as f: 
-            parsed = json.load(f)
-
-            if parsed["Username"] == username: 
-                return parsed["Password"]
             else:
                 pass
 

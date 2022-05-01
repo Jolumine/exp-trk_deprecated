@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QDialog, QPushButton, QComboBox, QVBoxLayout, QLabel
 from PyQt5.QtGui import QIcon
 
 from ...const import Admin_Logo, Wrong_Logo
-from ...algos import get_all_user, get_folder_number, get_password
+from ...algos import get_all_user
 
 import os
 
@@ -54,4 +54,4 @@ class Admin_Window(QDialog):
                 
             info.exec_()  
         else:
-            os.remove(f"C:/Users/{os.getlogin()}/AppData/local/Expense_Tracker/users/{get_folder_number(splitted[0], get_password(splitted[0]))}")
+            pass 
