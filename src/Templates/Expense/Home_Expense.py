@@ -7,9 +7,6 @@ from ..Plot.Plot_Window import Plot_Window
 
 from ...const import Money_Logo
 
-import csv 
-import os 
-
 class Home_Expense(QDialog): 
     def __init__(self, active_user, parent=None): 
         super().__init__(parent)

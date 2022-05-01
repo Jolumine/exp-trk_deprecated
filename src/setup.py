@@ -16,7 +16,7 @@ class Setup:
     Login_Icon_Link = "https://cdn-icons-png.flaticon.com/512/126/126486.png"
     Main_Logo_Link = "https://cdn-icons-png.flaticon.com/512/2/2144.png"
     New_User_Logo_Link = "https://cdn1.iconfinder.com/data/icons/avatar-1-2/512/Add_User1-512.png"
-    Wrong_Logo_Link = "https://cdn-icons-png.flaticon.com/512/1828/1828665.png"
+    Wrong_Logo_Link = "https://cdn-icons-png.flaticon.com/512/1828/1828774.png"
     Mod_Logo_Link = "https://cdn-icons-png.flaticon.com/512/61/61456.png"
     Export_Logo_Link = "https://cdn-icons-png.flaticon.com/512/151/151900.png"
     Transfer_Logo_Link = "https://cdn-icons-png.flaticon.com/512/876/876784.png"

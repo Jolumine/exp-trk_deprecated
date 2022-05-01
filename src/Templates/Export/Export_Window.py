@@ -1,11 +1,10 @@
 from PyQt5.QtWidgets import QPushButton, QCheckBox, QLabel, QHBoxLayout, QVBoxLayout, QComboBox, QFileDialog, QDialog
 from PyQt5.QtGui import QIcon
 
-from ...const import log_file, months_all, Export_Logo
+from ...const import months_all, Export_Logo
 
 import json
 import os
-import logging
 import csv
 
 class Export_Window(QDialog):

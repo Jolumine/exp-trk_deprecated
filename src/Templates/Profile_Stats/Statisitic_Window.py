@@ -1,14 +1,13 @@
-from locale import normalize
 from PyQt5.QtWidgets import QLabel, QLineEdit, QDialog, QHBoxLayout, QVBoxLayout
 from PyQt5.QtChart import QPieSlice, QChartView, QPieSeries, QChart
-from PyQt5.QtGui import QIcon, QPainter, QPen
+from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 
-from ...const import log_file, Stats_Logo
+from ...const import Stats_Logo
 from .Calc_Stats import get_expenses_sum, get_income_sum, get_sum_passive_exp, get_sum_passive_in
 
 import os
-import json
+import json #0169
 
 class Statistic_Window(QDialog):
     def __init__(self, active, parent=None):
