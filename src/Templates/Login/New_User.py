@@ -17,7 +17,7 @@ class New_User(QDialog):
     def __init__(self): 
         super().__init__()
 
-        self.root_folder = "C:\\Users\\Leonard Becker\\AppData/local\\Expense_Tracker"
+        self.root_folder = f"C:/Users/{os.getlogin()}/AppData/local/Expense_Tracker"
 
         self.values = string.ascii_uppercase + string.ascii_lowercase + string.digits + "!?*§$%&/()=\}][{€@"
 
