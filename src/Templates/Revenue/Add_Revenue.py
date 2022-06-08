@@ -3,6 +3,7 @@ from PyQt5.QtGui import QIcon
 
 from ...const import Add_Logo, months, years, types, days, field_names
 import csv 
+import os
 
 class Add_Income(QDialog):
     def __init__(self, active_user, parent=None): 
@@ -102,7 +103,7 @@ class Add_Income(QDialog):
         typ = self.type.currentText()
         descr = self.descr.toPlainText()
 
-        file = f"C:\\Users\\Leonard Becker\\AppData\\local\\Expense_Tracker\\users\\{self.active}\\income.csv"
+        file = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users\\{self.active}\\income.csv"
 
         with open(file, "a") as f: 
             writer = csv.DictWriter(f, fieldnames=field_names, lineterminator="\n")

@@ -4,6 +4,7 @@ from PyQt5.QtGui import QIcon
 from ...const import field_names, Delete_Logo
 
 import csv 
+import os 
 
 
 class Delete_Revenue(QDialog):
@@ -13,7 +14,7 @@ class Delete_Revenue(QDialog):
         self.active = active_user
 
         all = []
-        self.file = f"C:\\Users\\Leonard Becker\\AppData\\local\\Expense_Tracker\\users\\{self.active}\\income.csv"
+        self.file = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users\\{self.active}\\income.csv"
 
         with open(self.file, "r") as f: 
             reader = csv.DictReader(f, fieldnames=field_names)
