@@ -6,7 +6,6 @@ from ...algos import get_username_from_number, get_all_user, get_number_from_use
 
 import csv 
 import os 
-import logging
 import datetime
 
 class Transfer_Window(QDialog):

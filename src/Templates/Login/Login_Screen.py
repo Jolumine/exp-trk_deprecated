@@ -67,7 +67,7 @@ class Login_Page(QDialog):
         layout.addWidget(self.exit)
 
         self.setWindowTitle("Login")
-        self.setGeometry(300, 300, 400, 700)
+        self.setGeometry(300, 300, 400, 450)
         self.setWindowIcon(QIcon(Login_Icon))
         self.setLayout(layout)
         self.show()

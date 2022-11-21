@@ -7,13 +7,11 @@ from ...const import Stats_Logo
 from .Calc_Stats import get_expenses_sum, get_income_sum, get_sum_passive_exp, get_sum_passive_in
 
 import os
-import json #0169
+import json 
 
 class Statistic_Window(QDialog):
     def __init__(self, active, parent=None):
         super().__init__(parent)
-
-        # GUI Elements
 
         self.active = active
         self.active_path = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\users\\{self.active}"
@@ -63,8 +61,6 @@ class Statistic_Window(QDialog):
         self.passive_exp.setFixedWidth(250)
         self.passive_exp.setText(str(get_sum_passive_exp(self.active_path))+self.get_currency())
 
-        # Normal Sum Chart
-
         self.series_normal = QPieSeries()
         self.series_normal.append("Incomes", get_income_sum(self.active_path))
         self.series_normal.append("Expenses", get_expenses_sum(self.active_path))
@@ -91,10 +87,8 @@ class Statistic_Window(QDialog):
         self.chart_normal.legend().setAlignment(Qt.AlignBottom)
  
         self.chartview_normal = QChartView(self.chart_normal)
-        self.chartview_normal.setFixedHeight(600)
-        self.chartview_normal.setFixedWidth(600)
-        
-        # Passive Chart
+        self.chartview_normal.setFixedHeight(350)
+        self.chartview_normal.setFixedWidth(350)
 
         self.series_passive = QPieSeries()
         self.series_passive.append("Incomes", get_sum_passive_in(self.active_path))
@@ -122,10 +116,8 @@ class Statistic_Window(QDialog):
         self.chart_passive.legend().setAlignment(Qt.AlignBottom)
  
         self.chartview_passive = QChartView(self.chart_passive)
-        self.chartview_passive.setFixedHeight(600)
-        self.chartview_passive.setFixedWidth(600)
-
-        # Layouts 
+        self.chartview_passive.setFixedHeight(350)
+        self.chartview_passive.setFixedWidth(350)
 
         balance_layout = QHBoxLayout()
         balance_layout.addWidget(self.balance_label)
@@ -162,8 +154,6 @@ class Statistic_Window(QDialog):
         root = QHBoxLayout()
         root.addLayout(stats)
         root.addLayout(graph_1)
-
-        # Window Settings
 
         self.setWindowTitle("Profile Statistic")
         self.setGeometry(300, 300, 450, 450)
