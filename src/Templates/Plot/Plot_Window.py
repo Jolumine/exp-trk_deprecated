@@ -4,6 +4,9 @@ from PyQt5.QtGui import QIcon
 
 from ...const import years_all, types_all, Graph_Icon
 from .Math import Math
+from .Plotter import Plot
+ 
+from ...const import wo_month
 
 class Plot_Window(QDialog):
     def __init__(self, active, parent=None):
@@ -43,7 +46,6 @@ class Plot_Window(QDialog):
         self.plotButton.setToolTip("Click to plot the selected choice")
         self.plotButton.clicked.connect(self.plot)
 
-
         select_layout = QHBoxLayout()
         select_layout.addWidget(self.select_label)
         select_layout.addWidget(self.select)
@@ -75,16 +77,24 @@ class Plot_Window(QDialog):
 
     def plot(self) -> None:
         if self.type.currentText() == "All" and self.year.currentText() == "All":
-            Math.plot(self.select.currentText(), self.active_user)
+            amounts = Math.get_data(selected=self.select.currentText(), active=self.active_user)  
+            Math.clean_data()        
+            Plot(wo_month, amounts, "", "Month", "Amount")
 
         elif self.type.currentText() != "All" and self.year.currentText() != "All": 
-            Math.plot(selected=self.select.currentText(), active=self.active_user, year=self.year.currentText() ,type=self.type.currentText())
-        
+            amounts = Math.get_data(selected=self.select.currentText(), active=self.active_user, year=self.year.currentText() ,type=self.type.currentText())
+            Math.clean_data()        
+            Plot(wo_month, amounts, "", "Month", "Amount")    
+
         elif self.type.currentText != "All" and self.year.currentText() == "All":
-            Math.plot(selected=self.select.currentText(), active=self.active_user, type=self.type.currentText())
+            amounts = Math.get_data(selected=self.select.currentText(), active=self.active_user, type=self.type.currentText())
+            Math.clean_data()        
+            Plot(wo_month, amounts, "", "Month", "Amount")
             
         else: 
-            Math.plot(selected=self.select.currentText(), active=self.active_user, year=self.year.currentText())
+            amounts =Math.get_data(selected=self.select.currentText(), active=self.active_user, year=self.year.currentText())
+            Math.clean_data()        
+            Plot(wo_month, amounts, "", "Month", "Amount")
 
     def difference(self):
         Math.difference(self.active_user)
