@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt 
 import numpy as np 
+
 from ...const import wo_month, show_dict
 
 import csv 
@@ -8,7 +9,7 @@ import os
 class Math: 
 
     @classmethod
-    def plot(self, selected, active, year="", type=""): 
+    def get_data(self, selected, active, year="", type=""): 
         all_amounts = []
 
         if year != "" and type != "":   
@@ -27,16 +28,8 @@ class Math:
                 for v in show_dict.values():
                     all_amounts.append(v)
                     
-                plt.figure(figsize=(20, 14))
-                plt.bar(wo_month, all_amounts) 
+                return all_amounts
 
-                plt.title("Expense Overview")
-                plt.xlabel("Months")
-                plt.ylabel("Amount")        
-                plt.show()
-
-                for k in show_dict.keys():
-                    show_dict[k] = 0
             else: 
                 rev_file = f"C:/Users/{os.getlogin()}/AppData/local/Expense_Tracker/users/{active}/income.csv"
                 with open(rev_file, "r") as file:
@@ -52,16 +45,8 @@ class Math:
                 for v in show_dict.values():
                     all_amounts.append(v)
 
-                plt.figure(figsize=(12, 5))
-                plt.bar(wo_month, all_amounts) 
 
-                plt.title("Income Overview")
-                plt.xlabel("Months")
-                plt.ylabel("Amount")        
-                plt.show()
-
-                for k in show_dict.keys():
-                    show_dict[k] = 0  
+                return all_amounts
 
         elif year != "" and type == "":
             if selected == "Expenses": 
@@ -79,16 +64,7 @@ class Math:
                 for v in show_dict.values():
                     all_amounts.append(v)
 
-                plt.figure(figsize=(20, 14))
-                plt.bar(wo_month, all_amounts) 
-
-                plt.title("Expense Overview")
-                plt.xlabel("Months")
-                plt.ylabel("Amount")        
-                plt.show()
-
-                for k in show_dict.keys():
-                    show_dict[k] = 0
+                return all_amounts
             else: 
                 rev_file = f"C:/Users/{os.getlogin()}/AppData/local/Expense_Tracker/users/{active}/income.csv"
                 with open(rev_file, "r") as file:
@@ -101,16 +77,10 @@ class Math:
                             else: 
                                 pass
 
-            for v in show_dict.values():
-                all_amounts.append(v)
+                for v in show_dict.values():
+                    all_amounts.append(v)
 
-            plt.figure(figsize=(12, 5))
-            plt.bar(wo_month, all_amounts) 
-
-            plt.title("Income Overview")
-            plt.xlabel("Months")
-            plt.ylabel("Amount")        
-            plt.show()  
+                return all_amounts
 
         elif year == "" and type != "":
             if selected == "Expenses": 
@@ -128,16 +98,8 @@ class Math:
                 for v in show_dict.values():
                     all_amounts.append(v)
 
-                plt.figure(figsize=(20, 14))
-                plt.bar(wo_month, all_amounts) 
+                return all_amounts
 
-                plt.title("Expense Overview")
-                plt.xlabel("Months")
-                plt.ylabel("Amount")        
-                plt.show()
-
-                for k in show_dict.keys():
-                    show_dict[k] = 0
             else: 
                 rev_file = f"C:/Users/{os.getlogin()}/AppData/local/Expense_Tracker/users/{active}/income.csv"
                 with open(rev_file, "r") as file:
@@ -153,13 +115,7 @@ class Math:
             for v in show_dict.values():
                 all_amounts.append(v)
 
-            plt.figure(figsize=(12, 5))
-            plt.bar(wo_month, all_amounts) 
-
-            plt.title("Income Overview")
-            plt.xlabel("Months")
-            plt.ylabel("Amount")        
-            plt.show() 
+            return all_amounts
         
         elif year == "" and type == "":
             if selected == "Expenses": 
@@ -177,16 +133,7 @@ class Math:
                 for v in show_dict.values():
                     all_amounts.append(v)
 
-                plt.figure(figsize=(20, 14))
-                plt.bar(wo_month, all_amounts) 
-
-                plt.title("Expense Overview")
-                plt.xlabel("Months")
-                plt.ylabel("Amount")        
-                plt.show()
-
-                for k in show_dict.keys():
-                    show_dict[k] = 0
+                return all_amounts
             else: 
                 rev_file = f"C:/Users/{os.getlogin()}/AppData/local/Expense_Tracker/users/{active}/income.csv"
                 with open(rev_file, "r") as file:
@@ -202,13 +149,7 @@ class Math:
                 for v in show_dict.values():
                     all_amounts.append(v)
 
-                plt.figure(figsize=(12, 5))
-                plt.bar(wo_month, all_amounts) 
-
-                plt.title("Income Overview")
-                plt.xlabel("Months")
-                plt.ylabel("Amount")        
-                plt.show() 
+                return all_amounts
         else:
             pass 
         
@@ -262,3 +203,10 @@ class Math:
         plt.xlabel("Month")
         plt.ylabel("Amount")
         plt.show() 
+
+    
+    @classmethod
+    def clean_data(self): 
+        for key in show_dict.keys(): 
+            show_dict[key] = 0
+
