@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import QLineEdit, QDialog, QPushButton, QVBoxLayout, QLabel, QHBoxLayout, QMessageBox
 from PyQt5.QtGui import QIcon
-from Crypto.PublicKey import RSA
 
 from ...algos import get_new_number
 from ...const import Copy_Logo, New_User_Logo, Wrong_Logo, log_file, std_settings, Gen_Logo, Information_Logo
@@ -135,24 +134,13 @@ class New_User(QDialog):
                     sett.write(parsed)
                     sett.close()
 
-                exp_file = open(self.root_folder+"\\users\\"+folder_name+"\\expenses.csv", "w")
-                exp_file.write("Amount,Day,Month,Year,Type,Description\n")
-                exp_file.close()
+                with open(self.root_folder+"\\users\\"+folder_name+"\\expenses.csv", "w") as f: 
+                    f.write("Amount,Day,Month,Year,Type,Description\n")
+                    f.close()
 
-                in_file = open(self.root_folder+"\\users\\"+folder_name+"\\income.csv", "w")
-                in_file.write("Amount,Day,Month,Year,Type,Description\n")
-                in_file.close()
-
-                seckey = RSA.generate(1024)
-                with open(f"{self.root_folder}/users/{folder_name}/keys/seckey.pem", "wb") as file: 
-                    file.write(seckey.export_key(format="PEM"))
-                    file.close()
-
-                pblkey = seckey.publickey()
-                with open(f"{self.root_folder}/users/{folder_name}/keys/pblkey.pem", "wb") as file: 
-                    file.write(pblkey.export_key(format="PEM"))
-                    file.close()
-
+                with open(self.root_folder+"\\users\\"+folder_name+"\\income.csv", "w") as f: 
+                    f.write("Amount,Day,Month,Year,Type,Description\n")
+                    f.close()
 
                 dict = {
                     "Username": username, 
@@ -162,7 +150,6 @@ class New_User(QDialog):
                     "passive income": {},
                     "passive expense": {}
                 }
-
 
                 with open(self.root_folder+"\\users\\"+folder_name+"\\data.json", "w") as f: 
                     parsed = json.dumps(dict, indent=4, sort_keys=False)
@@ -176,8 +163,6 @@ class New_User(QDialog):
             logging.basicConfig(filename=log_file, encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
             logging.info(f"User with the username {username} has been created.")
                 
-
-            
 
     def generate(self):
         password = "".join(random.choice(self.values) for i in range(12))

@@ -21,8 +21,5 @@ def check_login(username, password) -> bool:
 
 
 def get_hash(message: str):
-    message = message.encode("utf-8")
+    return hashlib.sha3_512(message.encode("utf-8")).hexdigest()
 
-    hash =  hashlib.sha3_512(message)
-
-    return hash.hexdigest()
