@@ -2,6 +2,4 @@
 
 ## Table of contents 
 
-- Usage
-- Templates
-
+More information coming soon. 
