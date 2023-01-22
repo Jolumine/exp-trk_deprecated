@@ -83,7 +83,7 @@ class Login_Page(QDialog):
             
             logging.basicConfig(filename=log_file, encoding="utf-8", format='%(asctime)s %(message)s', level=logging.DEBUG)
             logging.info(f"{username} is logged in.")
-            root = Root_Window(folder_number)
+            window = Root_Window(folder_number)
         else: 
             info = QDialog()
             info.setWindowTitle("Login failed")
@@ -101,11 +101,10 @@ class Login_Page(QDialog):
             logging.info(f"Login failed.")
 
     def newUser(self): 
-        interface = New_User()
+        New_User()
 
     def Admin(self): 
-        dial = Admin_Login()
-
+        Admin_Login()
 
     def showPassFunc(self):
         if self.password.echoMode() == 0:

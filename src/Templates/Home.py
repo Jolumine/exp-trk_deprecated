@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QDialog, QLabel, QHBoxLayout, QPushButton, QVBoxLayout, QFrame
+from PyQt5.QtWidgets import QWidget, QLabel, QHBoxLayout, QPushButton, QVBoxLayout, QFrame
 from PyQt5.QtGui import QIcon
 
 from .Expense.Home_Expense import Home_Expense
@@ -15,7 +15,7 @@ from .Settings.Settings_Window import Settings_Window
 
 from ..const import Main_Logo, Menu_Logo, Transfer_Logo, Stats_Logo, Export_Logo, Money_Logo, Graph_Icon, Settings_Logo
 
-class Root_Window(QDialog): 
+class Root_Window(QWidget): 
     def __init__(self, active_user, parent=None): 
         super().__init__(parent)
         self.active_user = active_user
@@ -174,7 +174,7 @@ class Root_Window(QDialog):
         self.setLayout(root_1)
         self.setGeometry(300, 300, 500, 650)
         self.setWindowIcon(QIcon(Main_Logo))
-        self.exec_()
+        self.show()
 
 
     def expense(self): 
