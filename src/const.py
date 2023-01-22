@@ -1,51 +1,28 @@
 import os 
 
-# Logos 
 
 Main_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Main_Logo.png"
-
 Money_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Expense_Logo.png"
-
 Settings_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Admin_Logo.png"
-
 Add_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Add_Logo.png"
-
 Information_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Info_Logo.png"
-
 Delete_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Delete_Logo.png"
-
 Wrong_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Wrong_Icon.png"
-
 Login_Icon = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Login_Icon.png"
-
 New_User_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\New_User_Logo.png"
-
 welcome_logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Welcome.png"
-
 Admin_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Admin_Logo.png"
-
 Graph_Icon = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Graph_Logo.png"
-
 Mod_Icon = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Mod_Icon.png"
-
 Eye_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Eye_Logo.jpg"
-
 Export_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Export_Icon.png"
-
 Transfer_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Transfer_Icon.png"
-
 Warning_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Warning_Logo.png"
-
 Stats_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\local\\Expense_Tracker\\resources\\Logos\\Stats_Logo.png"
-
 Exit_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\Local\\Expense_Tracker\\resources\\Logos\\Exit_Logo.png"
-
 Next_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\Local\\Expense_Tracker\\resources\\Logos\\Next_Logo.png"
-
 Menu_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\Local\\Expense_Tracker\\resources\\Logos\\Menu_Logo.png"
-
 Gen_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\Local\\Expense_Tracker\\resources\\Logos\\Gen_Logo.png"
-
 Copy_Logo = f"C:\\Users\\{os.getlogin()}\\AppData\\Local\\Expense_Tracker\\resources\\Logos\\Copy_Logo.png"
 
 # Const 

@@ -3,7 +3,7 @@ from PyQt5.QtGui import QIcon
 
 
 from ...const import years_all, types_all, Graph_Icon
-from .Math import Math
+from .Calculations import Math
 from .Plotter import Plot
  
 from ...const import wo_month

@@ -6,8 +6,7 @@ from ...const import wo_month, show_dict
 import csv 
 import os
 
-class Math: 
-
+class Math:
     @classmethod
     def get_data(self, selected, active, year="", type=""): 
         all_amounts = []
@@ -205,8 +204,8 @@ class Math:
         plt.show() 
 
     
-    @classmethod
-    def clean_data(self): 
+    @staticmethod
+    def clean_data(cls): 
         for key in show_dict.keys(): 
             show_dict[key] = 0
 
