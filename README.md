@@ -1,16 +1,3 @@
 # :bar_chart:Expense_Tracker
 
-More information coming soon. 
-
-## :white_check_mark:Installation
-
-```bash
-git clone https://github.com/Jolumine/exp-trk.git
-cd exp-trk
-pip install .
-python run.py
-```
-
-## :link:Contact
-
-:iphone:  Twitter: <https://twitter.com/Leo_Becker09> \
+This is an old version of this app. The new version is avalaible under this [Link](https://github.com/Jolumine/exptrk)
